@@ -1,0 +1,58 @@
+###
+GET http://localhost:4011/api/current_vehicle/
+content-type: application/json
+
+###
+
+GET http://localhost:4011/api/view_history
+content-type: application/json
+
+###
+
+GET http://localhost:4011/api/view_all_vehicles
+
+###
+
+POST http://localhost:4011/api/change_vehicle/
+content-type: application/json
+
+{
+    "price_plan": "sms_kick_100",
+    "actions" : "call, sms, call"
+}
+
+###
+POST http://localhost:4011/api/settings/add_vehicle 
+content-type: application/json
+
+{
+    "plan_name" : "sms_kick_201",
+    "sms_price": 0.55,
+    "call_price" : 2.60
+    
+}
+
+
+###
+POST http://localhost:4011/api/price_plan/update
+content-type: application/json
+
+{   
+    "name" : "sms_kick_100",
+    "call_cost" : 2.65,
+    "sms_cost": 0.45
+}
+
+
+###
+POST http://localhost:4011/api/settings/delete_vehicle
+content-type: application/json
+
+{
+    "id" : 5
+}
+
+###
+
+GET http://localhost:4011/api/view_history
+//one line open needed after "application/json"

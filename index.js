@@ -1,8 +1,8 @@
 import express from 'express';
-import * as sqlite from 'sqlite';
-import sqlite3 from 'sqlite3';
+//import * as sqlite from 'sqlite';
+//import sqlite3 from 'sqlite3';
 
-import { getPlans, addPlan, deletePlan, updatePlan, totalPhonebill } from './db.js'
+//import { getPlans, addPlan, deletePlan, updatePlan, totalPhonebill } from './db.js'
 
 
 
@@ -18,76 +18,75 @@ console.log(`Server started on ${PORT}`)
 
 app.get('/api/current_vehicle/', async (req, res) => {
     //const plans = await getPlans();
-    console.log('current_vehicle);
+    console.log('current_vehicle');
     res.json({
-        registration : CBZ454GP,
-        model: Suzuki Swift,
+        registration : "CBZ454GP",
+        model: "Suzuki Swift",
         journeys: 256
 
     })
 });
 
-/*
-app.get("/api/price_plans/", function (req, res) {
+app.get('/api/current_vehicle/view_history', async (req, res) => {
+    //const plans = await getPlans();
+    console.log('current_vehicle');
+    res.json({
+        date: 25052023,
+        distance: 34,
+        score: 7,
+        emission: 30,
+        tax: 4.50
+    })
+});
+
+
+app.get("/api/view_all_vehicles", function (req, res) {
+    console.log('Here we\'ll find a list' );
 
     res.json({
-        call: 2.75,
-        sms: 0.65
+        list1 : "list1"
 
     });
 });
-*/
 
-app.post('/api/phonebill/', function (req, res) {
+
+app.post('/api/change_vehicle/', function (req, res) {
     const price_plan = req.body.price_plan;
     const actions = req.body.actions;
     //const price = req.body.price
 
     res.json({
-
-        total: 78.00
+        status: 'success',
+        vehicle : "Nissan"
 
     });
 });
 
-app.post('/api/price_plan/create', async (req, res) => {
+app.post('/api/settings/add_vehicle', async (req, res) => {
     console.log(req.body)
     const id = req.body.id;
     const plan_name = req.body.plan_name;
     const sms_price = req.body.sms_price;
     const call_price = req.body.call_price;
 
-    await addPlan(plan_name, sms_price, call_price)
+    //await addPlan(plan_name, sms_price, call_price)
     //
     res.json({
         status: 'success',
-        message: `Added a plan for ${plan_name},`
+        message: `Added a new vehicle,`
     })
-})
+});
 
 
-app.post('/api/price_plan/update', async (req, res) =>{
-    console.log(req.body)
-    //const id = req.body.id;
-    const plan_name = req.body.plan_name;
-    const sms_price = req.body.sms_price;
-    const call_price = req.body.call_price;
-
-    await updatePlan(plan_name, sms_price, call_price)
-    //
-    res.json({
-        status: 'success',
-        message: `Updated plan for ${plan_name},`
-    })
-})
-
-app.post('/api/price_plan/delete', async (req, res) =>{
+app.post('/api/settings/delete_vehicle', async (req, res) =>{
     //const usage = req.body.usage;
     const id = req.body.id
     
-    await deletePlan(id)
+    //await deletePlan(id)
     //
     res.json({
         status: 'success',
         message: `Deleted ${id},`
     })
+});
+

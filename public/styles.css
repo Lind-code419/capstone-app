@@ -14,13 +14,21 @@
     text-align: center;
  }
 
-.btn {
+.btn1 {
     padding : 0.5em;
     background-color: #0A4D52;
     margin: 0.5em;
     color: white;
     margin-bottom: 100px;
 }
+.btn2 {
+    padding : 0.5em;
+    background: linear-gradient(180deg, #64D93B 0%, rgba(156, 218, 134, 0.00) 100%);
+    margin: 0.5em;
+    color: white;
+    margin-bottom: 100px;
+}
+
 
 @media (min-width: 960px) {
     .btn {

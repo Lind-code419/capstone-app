@@ -1,6 +1,7 @@
 create table carbon_data (
     id integer primary key AUTOINCREMENT,
-     vehicle,
+    registration,
+    model,
     journey_date date,
     distance_traveled real,
     score real,
@@ -8,3 +9,9 @@ create table carbon_data (
     calculated_tax
    
 );
+
+
+create table all_vehicles (
+    id integer primary key AUTOINCREMENT,
+    
+    );

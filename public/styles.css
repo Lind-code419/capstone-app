@@ -1,0 +1,32 @@
+.pages {
+    background-color: #9CDA86;
+    background-image: url(./Rectangle\ 1.png);
+    border : 400px;
+}
+
+.screenHeader {
+    background-image: linear-gradient( #15441F61, #85EB9B61); 
+    text-align: center; 
+}
+
+.table {
+    color:bisque;
+    text-align: center;
+ }
+
+.btn {
+    padding : 0.5em;
+    background-color: #0A4D52;
+    margin: 0.5em;
+    color: white;
+    margin-bottom: 100px;
+}
+
+@media (min-width: 960px) {
+    .btn {
+        padding : 0.5em;
+        background-color: #0A4D52;
+        margin: 0.5em;
+        color: white;
+    }
+}

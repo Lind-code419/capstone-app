@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Route</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.min.js" defer></script>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="app-management.api.js"></script>
+
+
+</head>
+
+<body class="screenHeader">
+    <button style="margin-right: 10em" onclick="window.location.href='index.html';"><img src="Arrow 1.svg" alt="Back"></button>
+    <button onclick="window.location.href='settings-screen.html';"><img src="navicon-svgrepo-com.svg" style="height: 24px; width: 28; border: 0.5em ;" alt="Settings"></button>
+    <h2>Track Journey</h2>
+
+    <div class="pages">
+        <div><button style="background-color : #0A4D52; color: white; margin: 1em ">Start Journey</button>
+
+            <button style="background-color : #0A4D52; color: white; margin: 1em">End Journey</button>
+        </div>
+        <iframe width="325" height="350" frameborder="0.5em" scrolling="no" marginheight="0.5em" marginwidth="0.5em"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-62.04673002474011%2C16.95487694424327%2C-61.60521696321666%2C17.196751341562923&amp;layer=mapnik"
+            style="border: 1px solid black"></iframe>
+        <br /><small><a href="https://www.openstreetmap.org/#map=12/17.0759/-61.8260">View Larger Map</a></small>
+
+
+
+
+
+    </div>
+</body>
+
+</html>

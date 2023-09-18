@@ -49,6 +49,18 @@ app.get("/api/view_all_vehicles", function (req, res) {
     });
 });
 
+app.post('/current_vehicle/add_journey', async (req, res) =>{
+    //const usage = req.body.usage;
+    const id = req.body.id
+    
+    //await deletePlan(id)
+    //
+    res.json({
+        status: 'success',
+        message: `Deleted ${id},`
+    })
+});
+
 
 app.post('/api/change_vehicle/', function (req, res) {
     const price_plan = req.body.price_plan;
@@ -65,7 +77,7 @@ app.post('/api/change_vehicle/', function (req, res) {
 app.post('/api/settings/add_vehicle', async (req, res) => {
     console.log(req.body)
     const id = req.body.id;
-    const plan_name = req.body.plan_name;
+    const vehicle = req.body.vehicle;
     const sms_price = req.body.sms_price;
     const call_price = req.body.call_price;
 

@@ -17,8 +17,7 @@ POST http://localhost:4011/api/change_vehicle/
 content-type: application/json
 
 {
-    "price_plan": "sms_kick_100",
-    "actions" : "call, sms, call"
+    "vehicle": "sms_kick_100"
 }
 
 ###
@@ -26,13 +25,9 @@ POST http://localhost:4011/api/settings/add_vehicle
 content-type: application/json
 
 {
-    "plan_name" : "sms_kick_201",
-    "sms_price": 0.55,
-    "call_price" : 2.60
-    
+    "vehicle" : "Datsun Go"
+ 
 }
-
-
 
 
 ###

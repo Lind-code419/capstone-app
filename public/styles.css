@@ -1,11 +1,12 @@
 .pages {
-    background-color: #9CDA86;
     background-image: url(./Rectangle\ 1.png);
-    border : 400px;
+    background-color: #9CDA86;
+    text-align: center;
+    
 }
 
 .screenHeader {
-    background-image: linear-gradient( #15441F61, #85EB9B61); 
+    background-image: linear-gradient( #9CDA86, #85EB9B61); 
     text-align: center; 
 }
 
@@ -20,6 +21,7 @@
     margin: 0.5em;
     color: white;
     margin-bottom: 100px;
+
 }
 .btn2 {
     padding : 0.5em;

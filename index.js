@@ -102,3 +102,16 @@ app.post('/api/settings/delete_vehicle', async (req, res) =>{
     })
 });
 
+app.post('/api/settings/new_vehicle', async (req, res) =>{
+    //const usage = req.body.usage;
+    const id = req.body.id
+    
+    //await deletePlan(id)
+    //
+    res.json({
+        status: 'success',
+        emissions: 184,
+    })
+});
+
+

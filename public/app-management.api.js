@@ -1,16 +1,13 @@
 document.addEventListener("alpine:init", () => {
 
-    Alpine.data('phonePlans', () => {
+    Alpine.data('appData', () => {
         return {
 
-            title: 'Xmobile Price Plans',
             plans: [],
-            bill: '',
-            planID: '',
-            message: '',
-            planName: '',
-            smsPrice: '',
-            callPrice: '',
+            latitude: '',
+            longitude: '',
+
+
 
 
 
@@ -27,21 +24,30 @@ document.addEventListener("alpine:init", () => {
 
             },
 
-            createPlan(planName, smsPrice, callPrice) {
+            startRoute() {
                 
-                return axios
+                alert('Journey Started!')
+                /*return axios
                     .post('/api/price_plan/create ', {
                         "plan_name": `${planName}`,
                         "sms_price": `${smsPrice}`,
                         "call_price": `${callPrice}`
 
                     })
-                    .then(result => {alert(`Plan ${planName} created`);this.init();})
+                    .then(result => {alert(`Journey Started!`);})
                     //.then(result => { this.showCartData() })
-                    alert(`Plan ${planName} created`);
-                    this.init()
+                    alert(`Journey Started!`);
+                */
 
             },
+
+            endRoute() {
+                
+                alert('Journey Ended!')
+                
+
+            },
+
 
             updatePlan(planName,  smsPrice, callPrice) {
                 

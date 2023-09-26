@@ -38,4 +38,19 @@ content-type: application/json
     "id" : 5
 }
 
+###
+POST http://localhost:4011/api/settings/new_vehicle
+content-type: application/json
+
+{
+    "make" : "Nissan",
+    "model": "Sentra",
+    "engine_size": 1.6,
+    "cylinders": 4,
+    "transmission": "M5",
+    "fuel_type": "Z",
+    "fuel_consumption_combined_km": 10.6 
+
+}
+
 //one line open needed after "application/json"

@@ -10,8 +10,3 @@ create table carbon_data (
    
 );
 
-
-create table all_vehicles (
-    id integer primary key AUTOINCREMENT,
-    
-    );

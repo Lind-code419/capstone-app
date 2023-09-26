@@ -1,6 +1,9 @@
 .pages {
     background-image: url(./Rectangle\ 1.png);
+    background-repeat: no-repeat;
+    background-position: center center;
     background-color: #9CDA86;
+    background-size: cover;
     text-align: center;
     
 }

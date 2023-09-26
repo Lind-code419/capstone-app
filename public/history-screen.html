@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,13 +14,20 @@
 
 
 </head>
-<body class="screenHeader">
-    <button style="margin-right: 10em" onclick="window.location.href='index.html';"><img src="Arrow 1.svg"></button>
-    <button onclick="window.location.href='settings-screen.html';"><img src="navicon-svgrepo-com.svg" style="height: 24px; width: 28; border: 0.5em ;" alt="Settings"></button>
-  
-    <h2>History</h2>
-    
-    <div class="pages">
+
+<body x-data="appData" class="pages">
+
+    <div class="screenHeader"> 
+        <button style="margin-right: 10em" onclick="window.location.href='index.html';"><img
+                src="Arrow 1.svg"></button>
+        <button onclick="window.location.href='settings-screen.html';"><img src="navicon-svgrepo-com.svg"
+                style="height: 24px; width: 28; border: 0.5em ;" alt="Settings"></button>
+
+        <h2>History</h2>
+    </div>
+
+
+    <div>
         <table class="table">
             <tr>
                 <th>Date</th>
@@ -36,10 +44,10 @@
                     <td x-text="history.emission"></td>
                     <td x-text="history.tax"></td>
                     <td x-text="history.score"></td>
-                    
-                   
+
+
                 </tr>
-             
+
             </template>
         </table>
         <td>
@@ -48,11 +56,12 @@
             <button class="btn2" @click="viewHistory(currentVehicle, 0)">View Summary (Total of all Journeys)</button>
         </td>
         <div><button class="btn2" @click="viewHistory(currentVehicle, 5)">Share</button></div>
-        
+
 
 
 
 
     </div>
 </body>
+
 </html>

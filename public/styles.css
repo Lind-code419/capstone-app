@@ -1,21 +1,41 @@
 .pages {
-    background-image: url(./Rectangle\ 1.png);
+    background-image: url(./green-porsche.jpeg);
     background-repeat: no-repeat;
     background-position: center center;
     background-color: #9CDA86;
     background-size: cover;
     text-align: center;
+    color: bisque;
     
 }
 
-.screenHeader {
+.screenHeader1 {
     background-image: linear-gradient( #9CDA86, #85EB9B61); 
-    text-align: center; 
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
+
+.screenHeader2 {
+    background-image: linear-gradient( #9CDA86, #85EB9B61); 
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
 
 .table {
     color:bisque;
     text-align: center;
+ }
+
+ .navbtn1 {
+    margin:100px;
+ }
+
+ .navbtn2 {
+    margin:100px;
+    float: right;
  }
 
 .btn1 {
@@ -28,9 +48,9 @@
 }
 .btn2 {
     padding : 0.5em;
-    background: linear-gradient(180deg, #64D93B 0%, rgba(156, 218, 134, 0.00) 100%);
+    background-color:red;
     margin: 0.5em;
-    color: white;
+    color: black;
     margin-bottom: 100px;
 }
 

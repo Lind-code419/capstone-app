@@ -17,20 +17,24 @@
 
 <body x-data="appData" class="pages">
 
-  <div class="screenHeader">
-    <button style="margin-right: 10em" onclick="window.location.href='index.html';"><img src="Arrow 1.svg"
+  <div class="screenHeader2">
+    <button style="navbtn1" onclick="window.location.href='index.html';"><img src="Arrow 1.svg"
         alt="Back"></button>
-    <button onclick="window.location.href='settings-screen.html';"><img src="navicon-svgrepo-com.svg"
-        style="height: 24px; width: 28; border: 0.5em ;" alt="Settings"></button>
-    <h2>Track Journey</h2>
+
+    <button style="navbtn2" onclick="window.location.href='settings-screen.html';"><img
+        src="navicon-svgrepo-com.svg" style="height: 24px; width: 28; border: 0.5em ;" alt="Settings"></button>
+
   </div>
 
+
+  <h2>Track Journey</h2>
+
   <div>
-    <div><button class="btn2" @click="startRoute()">Start Journey</button>
+    <div><button class="btn1" @click="startRoute()">Start Journey</button>
 
       <button class="btn2" @click="endRoute()">End Journey</button>
     </div>
-    <iframe width="325" height="350" frameborder="0.5em" scrolling="no" marginheight="0.5em" marginwidth="0.5em"
+    <iframe width="575" height="850" frameborder="0.5em" scrolling="no" marginheight="0.5em" marginwidth="0.5em"
       src="https://www.openstreetmap.org/export/embed.html?bbox=-62.04673002474011%2C16.95487694424327%2C-61.60521696321666%2C17.196751341562923&amp;layer=mapnik"
       style="border: 1px solid black"></iframe>
     <br /><small><a href="https://www.openstreetmap.org/#map=12/17.0759/-61.8260">View Larger Map</a></small>

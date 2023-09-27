@@ -10,3 +10,19 @@ create table carbon_data (
    
 );
 
+create table my_vehicles (
+    id integer primary key AUTOINCREMENT
+    make,
+    model,
+    engine_size,
+    cylinders,
+    transmission,
+    fuel_type,
+    city_consumption,
+    highway_consumption,
+    combined_consumption_lp100km,
+    combined_consumption_mpg,
+    carbon_emissions
+    
+);
+

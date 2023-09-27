@@ -17,15 +17,15 @@
 
 <body x-data="appData" class="pages">
 
-    <div class="screenHeader"> 
-        <button style="margin-right: 10em" onclick="window.location.href='index.html';"><img
-                src="Arrow 1.svg"></button>
-        <button onclick="window.location.href='settings-screen.html';"><img src="navicon-svgrepo-com.svg"
-                style="height: 24px; width: 28; border: 0.5em ;" alt="Settings"></button>
+    <div class="screenHeader1">
+        <button style="navbtn1" onclick="window.location.href='index.html';"><img src="Arrow 1.svg"></button>
+        <button style="navbtn2" onclick="window.location.href='settings-screen.html';"><img src="navicon-svgrepo-com.svg"
+                style="height: 24px; width: 28; border: 0.5em ;" alt="Settings">
+            </button>
 
-        <h2>History</h2>
-    </div>
+        </div>
 
+    <h2>History</h2>
 
     <div>
         <table class="table">
@@ -51,11 +51,11 @@
             </template>
         </table>
         <td>
-            <button class="btn2" @click="viewHistory(currentVehicle, 5)">View last Five</button>
-            <button class="btn2" @click="viewHistory(currentVehicle, 100)">View All</button>
-            <button class="btn2" @click="viewHistory(currentVehicle, 0)">View Summary (Total of all Journeys)</button>
+            <button class="btn1" @click="viewHistory(currentVehicle, 5)">View last Five</button>
+            <button class="btn1" @click="viewHistory(currentVehicle, 100)">View All</button>
+            <button class="btn1" @click="viewHistory(currentVehicle, 0)">View Summary (Total of all Journeys)</button>
         </td>
-        <div><button class="btn2" @click="viewHistory(currentVehicle, 5)">Share</button></div>
+        <div><button class="btn1" @click="viewHistory(currentVehicle, 5)">Share</button></div>
 
 
 

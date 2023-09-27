@@ -3,9 +3,16 @@ document.addEventListener("alpine:init", () => {
     Alpine.data('appData', () => {
         return {
 
-            plans: [],
+            vehicles: [],
             latitude: '',
             longitude: '',
+            currentVehicle: '',
+            vehicleEmission: '',
+            currentScore: '',
+            history:[],
+
+        
+
 
 
 
@@ -13,7 +20,7 @@ document.addEventListener("alpine:init", () => {
 
             init() {
                 axios
-                    .get('/api/price_plans/')
+                    .get('/api/getcurrentvehicle/')
                     .then(result => {
                         this.plans = result.data.plans;
                         console.log(result.data)
@@ -49,10 +56,10 @@ document.addEventListener("alpine:init", () => {
             },
 
 
-            updatePlan(planName,  smsPrice, callPrice) {
+            viewHistory() {
                 
                 return axios
-                    .post('/api/price_plan/create ', {
+                    .get('/api/current_vehicle/history ', {
                         "plan_name": `${planName}`,
                         "sms_price": `${smsPrice}`,
                         "call_price": `${callPrice}`
@@ -65,43 +72,31 @@ document.addEventListener("alpine:init", () => {
 
             },
 
-            deletePlan(planID) {
+            addVehicle() {
                 
                 return axios
-                    .post('/api/price_plan/delete', {
+                    .post('/api/settings/delete_vehicle', {
                         
-                            "id" : `${planID}`
+                            "id" : `${vehicleID}`
                         
                     })
                     .then(result => {alert(`Plan ${planID} deleted`);this.init();})
                     
             },
 
-            pay(amount) {
+            deleteVehicle(vehicleID) {
+                
                 return axios
-                    .post('https://pizza-api.projectcodex.net/api/pizza-cart/pay', {
-                        "cart_code": "AaaCpfsnf8",
-                        amount
+                    .post('/api/settings/delete_vehicle', {
+                        
+                            "id" : `${vehicleID}`
+                        
                     })
-                    .then(result => {
-                        if (result.data.status == 'failure') {
-                            this.message = result.data.message;
-                            setTimeout(() => this.message = '', 3000)
-                        }
-                        else {
-                            this.message = 'Payment successful';
-                            setTimeout(() => {
-                                this.message = '';
-                                this.cartPizzas = [];
-                                this.cartTotal = 0;
-                                this.paymentAmount = 0.00;
-                                this.cartId = ''
-                            }, 5000)
-
-                        }
-                    })
+                    .then(result => {alert(`Plan ${planID} deleted`);this.init();})
+                    
             },
 
+           
 
 
         }

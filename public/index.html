@@ -8,9 +8,9 @@
 
     <link rel="stylesheet" href="styles.css">
 
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.min.js" defer></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.0/dist/cdn.min.js"></script>
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
-    <script src="app-management.api.js"></script>
+    <script src="app.js"></script>
 
 
 </head>
@@ -20,13 +20,14 @@
         <button style="navbtn2" onclick="window.location.href='settings-screen.html';"><img src="navicon-svgrepo-com.svg"
                 style="height: 24px; width: 28; border: 1em ; " alt="Settings"></button>
     </div>
-    <h2>Home</h2>
+    <h1>Home</h1>
 
     <div>
         <span>
-            <button class="btn1" onclick="window.location.href='settings-screen.html';">Settings</button>
+            <button class="btn1" onclick="window.location.href='tax-screen.html';">Calculate Tax</button>
             <button class="btn1" onclick="window.location.href='route-screen.html';">Track Journey</button>
             <button class="btn1" onclick="window.location.href='history-screen.html';">History</button>
+            <button class="btn1" onclick="window.location.href='optimal-screen.html';">Optimal Route</button>
         </span>
 
 

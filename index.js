@@ -2,7 +2,7 @@ import express from 'express';
 //import * as sqlite from 'sqlite';
 //import sqlite3 from 'sqlite3';
 
-//import { getPlans, addPlan, deletePlan, updatePlan, totalPhonebill } from './db.js'
+import { my_vehicles } from './db.js'
 
 
 
@@ -39,6 +39,13 @@ app.get('/api/current_vehicle/view_history', async (req, res) => {
     })
 });
 
+app.post('/api/searchVehicles', async (req,res) => {
+    res.json({
+        status : 'success'
+    })
+
+});
+
 
 app.get("/api/view_all_vehicles", function (req, res) {
     console.log('Here we\'ll find a list' );
@@ -48,6 +55,18 @@ app.get("/api/view_all_vehicles", function (req, res) {
 
     });
 });
+
+app.get("/api/my_vehicles", function (req, res) {
+    console.log('Here we\'ll find a list' );
+
+    res.json({
+        list1 : "list1",
+        vehicle: my_vehicles(),
+
+    });
+});
+
+
 
 app.post('/current_vehicle/add_journey', async (req, res) =>{
     //const usage = req.body.usage;

@@ -2,7 +2,7 @@ import * as sqlite from 'sqlite'; // * to import module that is not pure es6
 import sqlite3 from 'sqlite3';
 
 const  db = await sqlite.open({
-    filename:  './data_plan.db',
+    filename:  './vehicle.db',
     driver:  sqlite3.Database
 });
 
@@ -15,12 +15,12 @@ await db.migrate()
 
 //funstion that returns all the queries
 
-export async function getPlans() { //async marks as special function with await
-    const result = await db.all(`select * from price_plan`);
+export async function my_vehicles() { //async marks as special function with await
+    const result = await db.all(sql,`select * from my_vehicles`);
     return result;
 
 } 
-
+/*
 export async function addPlan(plan_name, sms_price, call_price) {
     //sql statement -insert
     //insert into greetings (language, greeting) values (?,?)
@@ -84,3 +84,4 @@ export async function totalPhonebill(id,itemString) {
 
 console.log('end')
 //ctrl-shift-p  to open database explorer
+*/

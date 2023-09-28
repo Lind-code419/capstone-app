@@ -8,9 +8,9 @@
 
     <link rel="stylesheet" href="styles.css">
 
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.min.js" defer></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.0/dist/cdn.min.js"></script>
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
-    <script src="app-management.api.js"></script>
+    <script src="app.js"></script>
 
 
 </head>
@@ -19,17 +19,71 @@
     <div class="screenHeader2"><button style="margin-right: 10em" onclick="window.location.href='index.html';"><img
                 src="Arrow 1.svg"></button>
     </div>
-    <h2>Settings</h2>
+    <h1>Settings</h1>
+
+
+    <div>
+        <span>
+            <button class="btn1" @click="showSection1=!showSection1;showSection3=false;showSection2=false;showSection4=false;showSection5=false;showSection6=false;">Add Vehicle</button>
+
+            <div x-show.transition="showSection1" class="inputblock">
+
+                <p>Type in make:</p>
+                 <p x-text="make"></p>
+                <input type="text" x-model="make">
+                <p>Type in model: </p>
+                <p x-text="model"></p>
+                    <input type="text" x-model="model">
+
+                <p><button class="btn3" @click="searchVehicle(make,model)">Search for vehicle</button></p>
+
+            </div>
 
 
 
-    <button class="btn1" @click="addVehicle()">Add Vehicle</button>
-    <button class="btn1" @click="deleteVehicle(currentVehicle)">Delete Vehicle</button>
+            <button class="btn1" @click="deleteVehicle(currentVehicle)">Delete Vehicle</button>
 
-    <button class="btn1" @click="viewVehicles()">View A Vehicle</button>
-    <button class="btn1" @click="viewAccount()">Account Details</button>
-    <button class="btn1" @click="viewSharing()">Sharing Details</button>
-    <button class="btn1" @click="signOut()">Sign Out</button>
+
+            <button class="btn1" @click="showSection3=!showSection3;showSection1=false;showSection2=false;showSection4=false;showSection5=false;showSection6=false;">View My Vehicles</button>
+
+            <div x-show.transition="showSection3" class="inputblock">
+
+                <table class="table">
+                    <tr>
+                        <th>Model</th>
+                        <th>Cylinders</th>
+                        <th>Registration</th>
+                        <th>CO2 emission</th>
+                        <th>Combined Fuel Consumption(L/100Km)</th>
+                       
+                    </tr>
+    
+                    <template x-for="vehicle in myVehicles">
+                        <tr>
+                            <td x-text="vehicle.model"></td>
+                            <td x-text="vehicle.cylinders"></td>
+                            <td x-text="vehicle.registration"></td>
+                            <td x-text="vehicle.carbon_emission"></td>
+                            <td x-text="vehicle.combined_consumption_lp100km"></td>
+        
+        
+                        </tr>
+        
+                    </template>
+                </table>
+
+            </div>
+
+
+
+            <button class="btn1" @click="viewAccount()">Account Details</button>
+            <button class="btn1" @click="viewSharing()">Sharing Details</button>
+            <button class="btn1" @click="signOut()">Sign Out</button>
+        </span>
+    </div>
+
+
+
 
 
 

@@ -27,16 +27,25 @@
 .table {
     color:bisque;
     text-align: center;
- }
+}
 
- .navbtn1 {
+.inputblock{
+    background-color: #0A4D52;
+    width: 30%;
+    height: 30%;
+    text-align: center;
+    margin-left: 35%;
+
+}
+
+.navbtn1 {
     margin:100px;
- }
+}
 
- .navbtn2 {
+.navbtn2 {
     margin:100px;
     float: right;
- }
+}
 
 .btn1 {
     padding : 0.5em;
@@ -44,6 +53,11 @@
     margin: 0.5em;
     color: white;
     margin-bottom: 100px;
+    width: 160px;
+    border: 0.5em;
+    height: 100px;
+    font-size: 20px;
+    border-radius: 0.5em;
 
 }
 .btn2 {
@@ -52,7 +66,29 @@
     margin: 0.5em;
     color: black;
     margin-bottom: 100px;
+    width: 160px;
+    border: 0.5em;
+    height: 100px;
+    font-size: 20px;
+    border-radius: 0.5em;
+
 }
+
+
+.btn3 {
+    padding : 0.5em;
+    background-color:#9CDA86;
+    margin: 0.5em;
+    color: black;
+    margin-bottom: 100px;
+    width: 160px;
+    border: 0.5em;
+    height: 100px;
+    font-size: 20px;
+    border-radius: 0.5em;
+
+}
+
 
 
 @media (min-width: 960px) {

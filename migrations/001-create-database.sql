@@ -1,16 +1,15 @@
-create table carbon_data (
-    id integer primary key AUTOINCREMENT,
-    registration,
-    model,
-    journey_date date,
-    distance_traveled real,
-    score real,
-    co2_emitted,
-    calculated_tax
-   
+CREATE TABLE if not exists history (
+    id                INTEGER PRIMARY KEY AUTOINCREMENT,
+    date              NUMERIC,
+    model             TEXT,
+    registration      TEXT,
+    distance_traveled REAL,
+    co2_emitted       REAL,
+    calculated_tax    REAL
 );
 
-create table my_vehicles (
+
+create table if not exists my_vehicles (
     id integer primary key AUTOINCREMENT
     make,
     model,

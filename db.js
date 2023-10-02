@@ -1,13 +1,13 @@
 import * as sqlite from 'sqlite'; // * to import module that is not pure es6
 import sqlite3 from 'sqlite3';
 
-const  db = await sqlite.open({
-    filename:  './vehicle.db',
-    driver:  sqlite3.Database
+const db = await sqlite.open({
+    filename: './vehicle.db',
+    driver: sqlite3.Database
 });
 
 
-await db.migrate()
+// await db.migrate()
 
 // query using await
 
@@ -16,24 +16,57 @@ await db.migrate()
 //funstion that returns all the queries
 
 export async function my_vehicles() { //async marks as special function with await
-    const result = await db.all(sql,`select * from my_vehicles`);
+    const result = await db.all(`select * from my_vehicles`);
     return result;
 
-} 
-/*
-export async function addPlan(plan_name, sms_price, call_price) {
-    //sql statement -insert
-    //insert into greetings (language, greeting) values (?,?)
-    
-    const sql = `insert into price_plan (plan_name, sms_price, call_price) values (?, ?, ?)`
-    await db.run(sql, [plan_name, sms_price, call_price]);
 }
 
-export async function deletePlan(id) {
-        
-    const sql = `delete from price_plan where id =?`
-    await db.run(sql, [id]);
+export async function current_vehicle() { //async marks as special function with await
+    const result = await db.all(`select * from my_vehicles where currently_selected =1`);
+    return result;
+
 }
+
+export async function change_vehicle(registration) {
+    //sql statement -insert
+    //insert into greetings (language, greeting) values (?,?)
+
+    let sql = `update my_vehicles set currently_selected=0 where currently_selected = 1`;
+    await db.run(sql);
+    sql = `update my_vehicles set currently_selected=1 where registration = $1`;
+    await db.run(sql, [registration]);
+    current_vehicle();
+}
+
+
+export async function search_vehicles(make, model) { //async marks as special function with await
+    let sql = `select * from vehicles where make =? and model =?`;
+
+    let result = await db.all(sql, [make, model]); //find out how to check for empty array
+    if (result = []) {
+        sql = `select * from vehicles where make =? or model =?`;
+        result = await db.all(sql, [make, model]);
+    }
+
+    return result;
+
+}
+
+export async function delete_vehicle(registration) {
+
+    const sql = `delete from my_vehicles where registration =?`
+    await db.run(sql, [registration]);
+}
+
+export async function view_users() { //async marks as special function with await
+    const result = await db.all(`select * from user`);
+    return result;
+
+}
+
+/*
+
+Why aren't export functions arrow functions despite being async?
 
 export async function updatePlan(plan_name, sms_price, call_price) {
         
@@ -62,17 +95,17 @@ export async function totalPhonebill(id,itemString) {
     }
 
     var calls = 0;
-  	var smses = 0;
-   	var item = itemString.split(',');
-  	console.log(item);
+        var smses = 0;
+          var item = itemString.split(',');
+        console.log(item);
   
-  	for (let i =0; i < item.length; i++) {
-    	console.log(item[i]);
-      	if (item[i].includes('call')) {
-        	calls++;
+        for (let i =0; i < item.length; i++) {
+        console.log(item[i]);
+            if (item[i].includes('call')) {
+            calls++;
         }
-      	else {
-        	smses++
+            else {
+            smses++
         }
     
     }

@@ -16,7 +16,7 @@
 </head>
 
 <body x-data="appData" class="pages">
-    <div class="screenHeader2"><button style="margin-right: 10em" onclick="window.location.href='index.html';"><img
+    <div class="screenHeader2"><button class="navbtn1" onclick="window.location.href='index.html';"><img
                 src="Arrow 1.svg"></button>
     </div>
     <h1>Settings</h1>
@@ -24,51 +24,62 @@
 
     <div>
         <span>
-            <button class="btn1" @click="showSection1=!showSection1;showSection3=false;showSection2=false;showSection4=false;showSection5=false;showSection6=false;">Add Vehicle</button>
+            <button class="btn1"
+                @click="showSection1=!showSection1;showSection3=false;showSection2=false;showSection4=false;showSection5=false;showSection6=false;">Add
+                Vehicle</button>
 
             <div x-show.transition="showSection1" class="inputblock">
 
                 <p>Type in make:</p>
-                 <p x-text="make"></p>
+                <p x-text="make"></p>
                 <input type="text" x-model="make">
                 <p>Type in model: </p>
                 <p x-text="model"></p>
-                    <input type="text" x-model="model">
+                <input type="text" x-model="model">
 
                 <p><button class="btn3" @click="searchVehicle(make,model)">Search for vehicle</button></p>
+                <p x-text="searchResult"></p>
 
             </div>
 
 
+            <button class="btn1"
+                @click="showSection2=!showSection2;showSection1=false;showSection3=false;showSection4=false;showSection5=false;showSection6=false;myVehicles();">Delete
+                Vehicles</button>
+            <div x-show.transition="showSection2" class="inputblock"><button class="btn1"
+                    @click="deleteVehicle(currentVehicle)">Delete Vehicle</button></div>
 
-            <button class="btn1" @click="deleteVehicle(currentVehicle)">Delete Vehicle</button>
 
 
-            <button class="btn1" @click="showSection3=!showSection3;showSection1=false;showSection2=false;showSection4=false;showSection5=false;showSection6=false;">View My Vehicles</button>
+            <button class="btn1"
+                @click="showSection3=!showSection3;showSection1=false;showSection2=false;showSection4=false;showSection5=false;showSection6=false;myVehicles();">View
+                My Vehicles</button>
 
             <div x-show.transition="showSection3" class="inputblock">
 
                 <table class="table">
                     <tr>
+                        <th>Make</th>
                         <th>Model</th>
                         <th>Cylinders</th>
                         <th>Registration</th>
                         <th>CO2 emission</th>
                         <th>Combined Fuel Consumption(L/100Km)</th>
-                       
+
                     </tr>
-    
+
                     <template x-for="vehicle in myVehicles">
                         <tr>
+                            <td x-text="vehicle.make"></td>
                             <td x-text="vehicle.model"></td>
                             <td x-text="vehicle.cylinders"></td>
                             <td x-text="vehicle.registration"></td>
                             <td x-text="vehicle.carbon_emission"></td>
                             <td x-text="vehicle.combined_consumption_lp100km"></td>
-        
-        
+
+
                         </tr>
-        
+
                     </template>
                 </table>
 
@@ -76,7 +87,11 @@
 
 
 
-            <button class="btn1" @click="viewAccount()">Account Details</button>
+            <button class="btn1" @click="showSection4=!showSection4;showSection1=false;showSection2=false;showSection3=false;showSection5=false;showSection6=false;let users=viewAccount()">Account and Personal Details</button>
+            <div x-show.transition="showSection4" class="inputblock">
+                <p x-text="users"></p>
+            </div>
+
             <button class="btn1" @click="viewSharing()">Sharing Details</button>
             <button class="btn1" @click="signOut()">Sign Out</button>
         </span>

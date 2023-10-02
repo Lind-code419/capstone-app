@@ -21,13 +21,20 @@ document.addEventListener("alpine:init", () => {
             make:'',
             model:'',
             myVehicles:[],
-            signedIn:1,
+            signedIn:0,
+            username:'',
+            password:'',
+            searchResult:'',
+            cylinders:'',
+            users:[],
 
 
 
             init() {
                 currentDate = new Date();
                 console.log(currentDate);
+                initialPosition = 0;
+                console.log('Login-status: ' + this.signedIn);
                 axios
                     .get('/api/getcurrentvehicle/')
                     .then(result => {
@@ -69,9 +76,9 @@ document.addEventListener("alpine:init", () => {
                 
                 return axios
                     .get('/api/current_vehicle/history ', {
-                        "plan_name": `${planName}`,
-                        "sms_price": `${smsPrice}`,
-                        "call_price": `${callPrice}`
+                        "make": `${make}`,
+                        "model": `${model}`,
+                        "cylinders": `${cylinders}`
 
                     })
                     //.then(result => { this.showCartData() })
@@ -93,22 +100,36 @@ document.addEventListener("alpine:init", () => {
                     
             },
 
-            deleteVehicle(vehicleID) {
+            deleteVehicle(registration) {
                 
                 return axios
                     .post('/api/settings/delete_vehicle', {
                         
-                            "id" : `${vehicleID}`
+                            "registration" : `${registration}`
                         
                     })
                     .then(result => {alert(`Plan ${planID} deleted`);this.init();})
                     
             },
 
+            viewAccount() {
+                
+                return axios
+                    .get('/api/view_users', {
+                        
+                            "users" : `${users}`
+                        
+                    })
+                    .then(result => {alert(`Plan ${planID} deleted`);this.init();})
+                    
+            },
+
+
+
             searchVehicle(make, model) {
                 
                 return axios
-                    .post('/api/searchVehicles', {
+                    .post('/api/search_vehicles', {
                         
                             "make" : `${make}`,
                             "model" :`${model}`
@@ -122,9 +143,9 @@ document.addEventListener("alpine:init", () => {
                 
                 return axios
                     .get('/api/my_vehicles', {
-                        "plan_name": `${planName}`,
-                        "sms_price": `${smsPrice}`,
-                        "call_price": `${callPrice}`
+                        "make": `${make}`,
+                        "model": `${model}`,
+                        "cylinders": `${cylinders}`
 
                     })
                     //.then(result => { this.showCartData() })

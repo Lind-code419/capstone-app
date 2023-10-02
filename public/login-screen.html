@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="app.js"></script>
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
-    <script src="alpine.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.0/dist/cdn.min.js" defer></script>
     <link rel="stylesheet" href="styles.css">
 
 </head>
@@ -21,7 +21,7 @@
     <div>
          Username: <input type="text" x-model="username">
                    <input type="text" x-model="password">
-                   <button x-on:click="logIn">login</button>
+                   <button x-on:click="logIn();" onclick="window.location.href='index.html';">login</button>
         
 
     </div>

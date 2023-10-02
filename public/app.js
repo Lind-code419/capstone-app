@@ -115,12 +115,12 @@ document.addEventListener("alpine:init", () => {
             viewAccount() {
                 
                 return axios
-                    .get('/api/view_users', {
-                        
-                            "users" : `${users}`
-                        
+                    .get('/api/view_users')
+                    .then(result => {
+                        this.users = result.data.users;
+                        console.log(result.data.users);
+                        //console.log(result.users.id)
                     })
-                    .then(result => {alert(`Plan ${planID} deleted`);this.init();})
                     
             },
 

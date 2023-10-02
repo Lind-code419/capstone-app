@@ -93,7 +93,7 @@ app.get("/api/view_users", async (req, res) => {
 
     res.json({
        
-        users: users
+        users
 
     });
 });

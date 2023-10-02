@@ -12,6 +12,10 @@ GET http://localhost:4011/api/my_vehicles
 content-type: application/json
 
 ###
+GET http://localhost:4011/api/view_users
+content-type: application/json
+
+###
 
 GET http://localhost:4011/api/view_all_vehicles
 

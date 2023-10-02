@@ -46,13 +46,13 @@
             <button class="btn1"
                 @click="showSection2=!showSection2;showSection1=false;showSection3=false;showSection4=false;showSection5=false;showSection6=false;myVehicles();">Delete
                 Vehicles</button>
-            <div x-show.transition="showSection2" class="inputblock"><button class="btn1"
+            <div x-show.transition="showSection2" class="inputblock"><button class="btn2"
                     @click="deleteVehicle(currentVehicle)">Delete Vehicle</button></div>
 
 
 
             <button class="btn1"
-                @click="showSection3=!showSection3;showSection1=false;showSection2=false;showSection4=false;showSection5=false;showSection6=false;myVehicles();">View
+                @click="showSection3=!showSection3;showSection1=false;showSection2=false;showSection4=false;showSection5=false;showSection6=false;let myVehicles =viewMyVehicles();">View
                 My Vehicles</button>
 
             <div x-show.transition="showSection3" class="inputblock">
@@ -74,7 +74,7 @@
                             <td x-text="vehicle.model"></td>
                             <td x-text="vehicle.cylinders"></td>
                             <td x-text="vehicle.registration"></td>
-                            <td x-text="vehicle.carbon_emission"></td>
+                            <td x-text="vehicle.carbon_emissions"></td>
                             <td x-text="vehicle.combined_consumption_lp100km"></td>
 
 
@@ -101,7 +101,7 @@
                 </div>
             </div>
 
-            <button class="btn1" @click="viewSharing()">Sharing Details</button>
+            <button class="btn1" @click="showSection5=!showSection5;showSection1=false;showSection2=false;showSection3=false;showSection4=false;showSection6=false;let users=viewAccount()">Sharing Details</button>
             <button class="btn1" @click="signOut()">Sign Out</button>
         </span>
     </div>

@@ -21,3 +21,9 @@ VALUES ('Smith', 'MacSmith', 'smithy@random.com', '12345', 'smithy@random.com', 
 SELECT * FROM user;
 
 update user set user_name='Smith', email_address='smithy@random.com', signed_in=1, last_signin='23092023', sharing_email='mrssmithy@random.com' where id =1;
+update user set user_name='Jane' where id =2;
+
+INSERT INTO history (date, model, registration, distance_traveled, co2_emitted, calculated_tax, currently_selected, score)
+VALUES (24092023, 'Prius', 'CBZ454GP', 28.4, 263, 1.65, 1, 8);
+
+SELECT * FROM history;

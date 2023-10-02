@@ -31,12 +31,12 @@ app.get('/api/current_vehicle/', async (req, res) => {
 //above part working 
 
 app.get("/api/my_vehicles", async (req, res) => {
-    console.log('Here we\'ll find a list' );
+    console.log('My Vehicle List' );
     const myVehicles = await my_vehicles();
 
     res.json({
        
-        vehicle: myVehicles
+        myVehicles
 
     });
 });

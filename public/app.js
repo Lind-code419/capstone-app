@@ -9,7 +9,8 @@ document.addEventListener("alpine:init", () => {
             currentVehicle: '',
             vehicleEmission: '',
             currentScore: '',
-            history: [],
+            myHistory: [],
+            journeys:[],
             showSection1: false,
             showSection2: false,
             showSection3: false,
@@ -24,9 +25,11 @@ document.addEventListener("alpine:init", () => {
             signedIn: 0,
             username: '',
             password: '',
-            searchResult: '',
+            searchResult: [],
             cylinders: '',
             users: [],
+            vehicleSelection: '',
+            resultsPerPage: '',
 
 
 
@@ -34,6 +37,7 @@ document.addEventListener("alpine:init", () => {
                 currentDate = new Date();
                 console.log(currentDate);
                 initialPosition = 0;
+                this.viewHistory(5);
                 console.log('Login-status: ' + this.signedIn);
                 axios
                     .get('/api/getcurrentvehicle/')
@@ -49,7 +53,7 @@ document.addEventListener("alpine:init", () => {
 
             viewMyVehicles() {
 
-                return axios
+                return axios //this section works
                     .get('/api/my_vehicles')
                     .then(result => {
                         this.myVehicles = result.data.myVehicles;
@@ -63,13 +67,44 @@ document.addEventListener("alpine:init", () => {
 
             viewAccount() {
 
-                return axios
+                return axios    //this section works
                     .get('/api/view_users')
                     .then(result => {
                         this.users = result.data.users;
                         console.log(result.data.users);
-                        //console.log(result.users.id)
+
                     })
+
+            },
+
+            searchVehicle(make, model) {
+
+                return axios
+                    .post('/api/search_vehicles', {
+
+                        "make": `${make}`,
+                        "model": `${model}`
+
+                    })
+                    .then(result => {
+                        this.searchResult = result.data.result;
+                        console.log(result.data.result);
+                    })
+
+            },
+
+            viewHistory(resultsPerPage) {
+
+                return axios
+                    .post('/api/all_vehicles/view_history', {
+                        "resultsPerPage" :`${resultsPerPage}`
+
+                    })
+                    .then(result => { 
+                        this.journeys=result.data.history;
+                        console.log(this.journeys);
+                    })
+
 
             },
 
@@ -89,14 +124,7 @@ document.addEventListener("alpine:init", () => {
                 */
 
             },
-            viewHistory() {
 
-                return axios
-                    .get('/api/current_vehicle/history ')
-                    .then(result => { alert(`History list`); })
-
-
-            },
 
             endRoute() {
 
@@ -136,19 +164,6 @@ document.addEventListener("alpine:init", () => {
             },
 
 
-
-            searchVehicle(make, model) {
-
-                return axios
-                    .post('/api/search_vehicles', {
-
-                        "make": `${make}`,
-                        "model": `${model}`
-
-                    })
-                    .then(result => { alert(`Plan ${planID} deleted`); this.init(); })
-
-            },
 
 
             signOut() {

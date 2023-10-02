@@ -64,6 +64,13 @@ export async function view_users() { //async marks as special function with awai
 
 }
 
+export async function historyDb(numberPerPage) { //async marks as special function with await
+    const sql = `select * from history limit ?`;
+    const result = await db.all(sql,[numberPerPage]);
+    return result;
+
+}
+
 /*
 
 Why aren't export functions arrow functions despite being async?

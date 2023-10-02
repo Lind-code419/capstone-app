@@ -3,7 +3,7 @@ import express from 'express';
 //import sqlite3 from 'sqlite3';
 
 console.log('START');
-import { my_vehicles, current_vehicle, search_vehicles, change_vehicle, delete_vehicle, view_users } from './db.js'
+import { my_vehicles, current_vehicle, search_vehicles, change_vehicle, delete_vehicle, view_users, historyDb } from './db.js'
 
 
 const app = express();
@@ -57,7 +57,7 @@ app.post('/api/search_vehicles', async (req,res) => {
     
 });
 
-//above partially working 
+//above partially working, giving too many results 
 
 app.post('/api/change_vehicle/', async (req, res) => {
     const registration = req.body.registration;
@@ -98,6 +98,7 @@ app.get("/api/view_users", async (req, res) => {
     });
 });
 
+//above part working
 
 app.post('/api/settings/add_vehicle', async (req, res) => {
     console.log(req.body)
@@ -118,11 +119,20 @@ app.get('/api/current_vehicle/view_history', async (req, res) => {
     //const plans = await getPlans();
     console.log('current_vehicle');
     res.json({
-        date: 25052023,
+        date: 25052023, //investigate date format from javascript
         distance: 34,
         score: 7,
         emission: 30,
         tax: 4.50
+    })
+});
+
+app.post('/api/all_vehicles/view_history', async (req, res) => {
+    const resultsPerPage = req.body.resultsPerPage;
+    const history = await historyDb(resultsPerPage);
+    console.log(history);
+    res.json({
+        history
     })
 });
 

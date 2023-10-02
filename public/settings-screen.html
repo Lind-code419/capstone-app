@@ -25,7 +25,7 @@
     <div>
         <span>
             <button class="btn1"
-                @click="showSection1=!showSection1;showSection3=false;showSection2=false;showSection4=false;showSection5=false;showSection6=false;">Add
+                @click="showSection1=!showSection1;showSection3=false;showSection2=false;showSection4=false;showSection5=false;showSection6=false;">Select
                 Vehicle</button>
 
             <div x-show.transition="showSection1" class="inputblock">
@@ -37,17 +37,26 @@
                 <p x-text="model"></p>
                 <input type="text" x-model="model">
 
-                <p><button class="btn3" @click="searchVehicle(make,model)">Search for vehicle</button></p>
+                <p><button class="btn3" @click="searchResult = searchVehicle(make,model);init()">Search for vehicle</button></p>
                 <p x-text="searchResult"></p>
 
             </div>
 
 
             <button class="btn1"
-                @click="showSection2=!showSection2;showSection1=false;showSection3=false;showSection4=false;showSection5=false;showSection6=false;myVehicles();">Delete
+                @click="showSection2=!showSection2;showSection1=false;showSection3=false;showSection4=false;showSection5=false;showSection6=false;let myVehicles=viewMyVehicles();">Delete
                 Vehicles</button>
-            <div x-show.transition="showSection2" class="inputblock"><button class="btn2"
-                    @click="deleteVehicle(currentVehicle)">Delete Vehicle</button></div>
+            <div x-show.transition="showSection2" class="inputblock">
+
+                <select x-model="vehicleSelection" class="selectionBox">
+                    <template x-for="vehicle in myVehicles" :key="vehicle.registration">
+                      <option :value="vehicle.registration" x-text="vehicle.make + ' ' + vehicle.model + ' ' + vehicle.registration"></option>
+                    </template>
+                  </select>
+               
+                <button class="btn2"
+                    @click="deleteVehicle(currentVehicle)">Delete Vehicle</button>
+                </div>
 
 
 

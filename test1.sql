@@ -27,3 +27,5 @@ INSERT INTO history (date, model, registration, distance_traveled, co2_emitted, 
 VALUES (24092023, 'Prius', 'CBZ454GP', 28.4, 263, 1.65, 1, 8);
 
 SELECT * FROM history;
+
+select * from history limit 5

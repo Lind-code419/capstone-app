@@ -37,8 +37,21 @@
                 <p x-text="model"></p>
                 <input type="text" x-model="model">
 
-                <p><button class="btn3" @click="searchResult = searchVehicle(make,model);init()">Search for vehicle</button></p>
-                <p x-text="searchResult"></p>
+                <p><button class="btn3" @click="searchResult = searchVehicle(make,model);init(); showSubSection1=!showSubSection1">Search for vehicle</button></p>
+                <div x-show.transition="showSubSection1" class="inputblock">
+
+                    <select x-model="vehicleSelection" class="selectionBox">
+                        <template x-for="vehicle in searchResult" :key="vehicle.Model" >
+                            <p x-text="vehicle.Model"></p>
+                          <option :value="vehicle.Make" x-text="vehicle.Make + ' ' + result.Model + result.Cylinders"></option>
+                        </template>
+                      </select>
+                   
+                    <button class="btn3"
+                        @click="deleteVehicle(currentVehicle)">Select this Vehicle</button>
+                    </div>
+                
+                <p x-text="searchResult.Model"></p>
 
             </div>
 

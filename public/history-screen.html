@@ -52,9 +52,20 @@
                 </tr>
 
             </template>
+            <select x-model="resultsPerPage" class="selectionBox">
+
+                    <option value="5">results per page</option>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+
+                </template>
+            </select>
+
         </table>
         <td>
-            <button class="btn1" @click="viewHistory(5)">View last Five</button>
+            <button class="btn1" @click="viewHistory(resultsPerPage)">View </button>
             <button class="btn1" @click="viewHistory(currentVehicle, 100)">View All</button>
             <button class="btn1" @click="viewHistory(currentVehicle, 0)">View Summary (Total of all Journeys)</button>
         </td>

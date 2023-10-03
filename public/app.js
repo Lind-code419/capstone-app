@@ -10,13 +10,14 @@ document.addEventListener("alpine:init", () => {
             vehicleEmission: '',
             currentScore: '',
             myHistory: [],
-            journeys:[],
+            journeys: [],
             showSection1: false,
             showSection2: false,
             showSection3: false,
             showSection4: false,
             showSection5: false,
             showSection6: false,
+            showSubSection1: false,
             searchVehicle: '',
             currentDate: '',
             make: '',
@@ -29,7 +30,7 @@ document.addEventListener("alpine:init", () => {
             cylinders: '',
             users: [],
             vehicleSelection: '',
-            resultsPerPage: '',
+            resultsPerPage: 0,
 
 
 
@@ -37,7 +38,7 @@ document.addEventListener("alpine:init", () => {
                 currentDate = new Date();
                 console.log(currentDate);
                 initialPosition = 0;
-                this.viewHistory(5);
+                this.viewHistory(10);
                 console.log('Login-status: ' + this.signedIn);
                 axios
                     .get('/api/getcurrentvehicle/')
@@ -87,8 +88,9 @@ document.addEventListener("alpine:init", () => {
 
                     })
                     .then(result => {
-                        this.searchResult = result.data.result;
-                        console.log(result.data.result);
+                        this.searchResult = result.data.searchResult;
+                        console.log('here')
+                        console.log(this.searchResult);
                     })
 
             },
@@ -97,11 +99,11 @@ document.addEventListener("alpine:init", () => {
 
                 return axios
                     .post('/api/all_vehicles/view_history', {
-                        "resultsPerPage" :`${resultsPerPage}`
+                        "resultsPerPage": `${resultsPerPage}`
 
                     })
-                    .then(result => { 
-                        this.journeys=result.data.history;
+                    .then(result => {
+                        this.journeys = result.data.history;
                         console.log(this.journeys);
                     })
 
@@ -128,7 +130,22 @@ document.addEventListener("alpine:init", () => {
 
             endRoute() {
 
-                alert('Journey Ended!')
+                alert('Journey Ended!');
+                return axios
+                    .post('/api/current_vehicle/add_journey', {
+                        "date": 25092023,
+                        "model": "DB9",
+                        "registration": "CB439GP",
+                        "distance_traveled": 52.3,
+                        "co2_emitted": 6338,
+                        "calculated_tax": 26.51,
+                        "currently_selected": 0,
+                        "score": 3.5
+
+                    })
+                    //.then(result => { alert(`Journey Started!`); })
+                //.then(result => { this.showCartData() })
+
 
 
             },

@@ -47,12 +47,13 @@ app.get("/api/my_vehicles", async (req, res) => {
 app.post('/api/search_vehicles', async (req,res) => {
 
     
-    const make = req.body.make
-    const model = req.body.model
-    const searchResult = await search_vehicles(make,model)
+    let make = (req.body.make);
+    make = make.toUpperCase();    
+    const model = req.body.model;
+    const searchResult = await search_vehicles(make,model);
     res.json({
-        status : 'success',
-        result : searchResult
+        
+        searchResult
     })
     
 });

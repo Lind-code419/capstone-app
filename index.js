@@ -3,7 +3,7 @@ import express from 'express';
 //import sqlite3 from 'sqlite3';
 
 console.log('START');
-import { my_vehicles, current_vehicle, search_vehicles, change_vehicle, delete_vehicle, view_users, historyDb } from './db.js'
+import { my_vehicles, current_vehicle, search_vehicles, change_vehicle, delete_vehicle, view_users, historyDb, add_journeyDB } from './db.js'
 
 
 const app = express();
@@ -144,15 +144,23 @@ app.get("/api/view_all_vehicles", function (req, res) {
 
     });
 });
-app.post('/current_vehicle/add_journey', async (req, res) =>{
-    //const usage = req.body.usage;
-    const id = req.body.id
+
+app.post('/api/current_vehicle/add_journey', async (req, res) =>{
+    const date= req.body.date;
+    const model= req.body.model;
+    const registration=req.body.registration;
+    const distance_traveled = req.body.distance_traveled;
+    const co2_emitted = req.body.co2_emitted;
+    const calculated_tax = req.body.calculated_tax;
+    const currently_selected = req.body.currently_selected;
+    const score = req.body.score;
+
+    await add_journeyDB(date, model, registration, distance_traveled, co2_emitted, calculated_tax, currently_selected, score)
     
-    //await deletePlan(id)
-    //
+   
     res.json({
         status: 'success',
-        message: `Deleted ${id},`
+        message: `added journey,`
     })
 });
 

@@ -76,4 +76,23 @@ content-type: application/json
 POST http://localhost:4011/api/all_vehicles/view_history
 Content-Type: application/json
 
+{
+    "resultsPerPage" : 5
+}
+
+###
+POST http://localhost:4011/api/current_vehicle/add_journey
+Content-Type: application/json
+
+{
+    "date":24092023, 
+    "model":"DB9",
+    "registration":"CB439GP", 
+    "distance_traveled":34.3, 
+    "co2_emitted":3424, 
+    "calculated_tax":15.77, 
+    "currently_selected":0, 
+    "score":4
+}
+
 //one line open needed after "application/json"

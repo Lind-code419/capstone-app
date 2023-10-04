@@ -19,11 +19,11 @@
 
     <div class="screenHeader1">
         <button class="navbtn1" onclick="window.location.href='index.html';"><img src="Arrow 1.svg"></button>
-        <button class="navbtn2" onclick="window.location.href='settings-screen.html';"><img src="navicon-svgrepo-com.svg"
-                style="height: 24px; width: 28; border: 0.5em ;" alt="Settings">
-            </button>
+        <button class="navbtn2" onclick="window.location.href='settings-screen.html';"><img
+                src="navicon-svgrepo-com.svg" style="height: 24px; width: 28; border: 0.5em ;" alt="Settings">
+        </button>
 
-        </div>
+    </div>
 
     <h2>History</h2>
 
@@ -54,11 +54,11 @@
             </template>
             <select x-model="resultsPerPage" class="selectionBox">
 
-                    <option value="5">results per page</option>
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
+                <option value="5">results per page</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
 
                 </template>
             </select>
@@ -66,8 +66,36 @@
         </table>
         <td>
             <button class="btn1" @click="viewHistory(resultsPerPage)">View </button>
-            <button class="btn1" @click="viewHistory(currentVehicle, 100)">View All</button>
-            <button class="btn1" @click="viewHistory(currentVehicle, 0)">View Summary (Total of all Journeys)</button>
+
+            <button class="btn1" @click="showHistorySection1=!showHistorySection1; viewHistoryTotals()">View Summary
+                (Total of all Journeys)</button>
+
+            <div x-show.transition="showSection3" class="inputblock">
+
+                <table class="table">
+                    <tr>
+                        <th>Date</th>
+                        <th>Registration</th>
+                        <th>Distance</th>
+                        <th>CO2 emission</th>
+                        <th>Estimated Tax</th>
+                        <th>Score</th>
+                    </tr>
+
+                    <template x-for="total in historyTotals">
+                        <tr>
+                            <td x-text="total.registration"></td>
+                            <td x-text="total.distance_traveled"></td>
+                            <td x-text="total.co2_emitted"></td>
+                            <td x-text="total.calculated_tax"></td>
+                            <td x-text="total.score"></td>
+
+                        </tr>
+
+                    </template>
+                </table>
+
+            </div>
         </td>
         <div><button class="btn1" @click="viewHistory(currentVehicle, 5)">Share</button></div>
 

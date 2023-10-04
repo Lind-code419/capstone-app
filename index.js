@@ -3,7 +3,7 @@ import express from 'express';
 //import sqlite3 from 'sqlite3';
 
 console.log('START');
-import { my_vehicles, current_vehicle, search_vehicles, change_vehicle, delete_vehicle, view_users, historyDb, add_journeyDB } from './db.js'
+import { my_vehicles, current_vehicle, search_vehicles, change_vehicle, delete_vehicle, view_users, historyDb, add_journeyDB, history_totalDB } from './db.js'
 
 
 const app = express();
@@ -101,6 +101,28 @@ app.get("/api/view_users", async (req, res) => {
 
 //above part working
 
+app.post('/api/all_vehicles/view_history', async (req, res) => {
+    const resultsPerPage = req.body.resultsPerPage;
+    const history = await historyDb(resultsPerPage);
+    console.log(history);
+    res.json({
+        history
+    })
+});
+
+//sbove part working
+
+app.get("/api/history_totals", async (req, res) => {
+    console.log('My Vehicle List' );
+    const summary = await history_totalDB();
+
+    res.json({
+       
+        summary
+
+    });
+});
+
 app.post('/api/settings/add_vehicle', async (req, res) => {
     console.log(req.body)
     const id = req.body.id;
@@ -128,14 +150,6 @@ app.get('/api/current_vehicle/view_history', async (req, res) => {
     })
 });
 
-app.post('/api/all_vehicles/view_history', async (req, res) => {
-    const resultsPerPage = req.body.resultsPerPage;
-    const history = await historyDb(resultsPerPage);
-    console.log(history);
-    res.json({
-        history
-    })
-});
 
 app.get("/api/view_all_vehicles", function (req, res) {
     console.log('Here we\'ll find a list' );

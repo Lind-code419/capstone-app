@@ -31,6 +31,10 @@ document.addEventListener("alpine:init", () => {
             users: [],
             vehicleSelection: '',
             resultsPerPage: 0,
+            historyTotals:[],
+            showHistorySection1:false,
+            distanceEntered: 0,
+            taxResult:0,
 
 
 
@@ -110,6 +114,20 @@ document.addEventListener("alpine:init", () => {
 
             },
 
+            viewHistoryTotals() {
+
+                return axios    //this section works
+                    .get('/api/history_totals')
+                    .then(result => {
+                        this.historyTotals = result.data.summary;//same as primary key?
+                        console.log(result.data.summary);
+
+                    })
+
+            },
+
+
+
             startRoute() {
 
                 alert('Journey Started!')
@@ -148,6 +166,10 @@ document.addEventListener("alpine:init", () => {
 
 
 
+            },
+
+            calculateTax(distanceEntered) {
+                 this.taxResult =this.distanceEntered * 0.2;
             },
 
 

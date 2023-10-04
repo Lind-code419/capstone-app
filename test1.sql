@@ -28,4 +28,6 @@ VALUES (24092023, 'Prius', 'CBZ454GP', 28.4, 263, 1.65, 1, 8);
 
 SELECT * FROM history;
 
-select * from history limit 5
+select * from history limit 10
+
+SELECT registration, SUM(distance_traveled) as total_distance, SUM(co2_emitted) as total_co2, SUM(calculated_tax) as total_tax, AVG(score) as avg_score FROM history GROUP BY registration;

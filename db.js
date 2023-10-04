@@ -78,6 +78,15 @@ export async function add_journeyDB(date, model, registration, distance_traveled
 
 }
 
+export async function history_totalDB() { //async marks as special function with await
+    const sql = `SELECT registration, model, ROUND(SUM(distance_traveled),2) as total_distance, SUM(co2_emitted) as total_co2, ROUND(SUM(calculated_tax),2) as total_tax, ROUND(AVG(score),2) as avg_score 
+    FROM history 
+    GROUP BY registration;`;
+    const result = await db.all(sql);
+    return result;
+
+}
+
 /*
 
 Why aren't export functions arrow functions despite being async?

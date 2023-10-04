@@ -22,10 +22,12 @@
     <h2>Home</h2>
 
     <p>Type in distance in km:</p>
-    <p x-text="distance"></p>
-    <input type="text" x-model="distance">
+    <p x-text="distanceEntered"></p>
+    
+    <input type="text" x-model="distanceEntered">
 
-    <p><button class="btn1" @click="calculateTax(distance)">Calculate tax</button></p>
+    <p><button class="btn1" @click="calculateTax(distanceEntered)">Calculate tax</button></p>
+    <p x-text="'R ' + taxResult"></p>
 
 
     </div>

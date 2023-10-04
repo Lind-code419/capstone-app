@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Tax Calculator</title>
 
     <link rel="stylesheet" href="styles.css">
 
@@ -20,14 +20,25 @@
                 src="Arrow 1.svg"></button>
     </div>
     <h2>Home</h2>
+    <select x-model="vehicleSelection" class="selectionBox">
+        <template x-for="vehicle in myVehicles" :key="vehicle.registration">
+            <option :value="vehicle.registration"
+                x-text="vehicle.make + ' ' + vehicle.model + ' ' + vehicle.registration"></option>
+        </template>
+    </select>
+    <button class="btn1" @click="viewMyVehicles()">Select Vehicle</button>
 
-    <p>Type in distance in km:</p>
-    <p x-text="distanceEntered"></p>
-    
-    <input type="text" x-model="distanceEntered">
+    <div class="inputblock">
+        <p>Type in distance in km:</p>
+        <p x-text="distanceEntered"></p>
+        <input type="text" x-model="distanceEntered">
+        <p><button class="btn3" @click="calculateTax(distanceEntered); showSubSection2=!showSubSection2">Calculate
+                tax</button></p>
+                <div x-show="showSubSection2">
+                    <p x-text="'This journey : R ' + taxResult.toFixed(2)"></p>
+                </div>
+    </div>
 
-    <p><button class="btn1" @click="calculateTax(distanceEntered)">Calculate tax</button></p>
-    <p x-text="'R ' + taxResult"></p>
 
 
     </div>

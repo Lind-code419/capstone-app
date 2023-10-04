@@ -37,20 +37,22 @@
                 <p x-text="model"></p>
                 <input type="text" x-model="model">
 
-                <p><button class="btn3" @click="searchResult = searchVehicle(make,model);init(); showSubSection1=!showSubSection1">Search for vehicle</button></p>
+                <p><button class="btn3"
+                        @click="searchResult = searchVehicle(make,model);init(); showSubSection1=!showSubSection1">Search
+                        for vehicle</button></p>
                 <div x-show.transition="showSubSection1" class="inputblock">
 
                     <select x-model="vehicleSelection" class="selectionBox">
-                        <template x-for="vehicle in searchResult" :key="vehicle.Model" >
+                        <template x-for="vehicle in searchResult" :key="vehicle.Model">
                             <p x-text="vehicle.Model"></p>
-                          <option :value="vehicle.Make" x-text="vehicle.Make + ' ' + result.Model + result.Cylinders"></option>
+                            <option :value="vehicle.Make" x-text="vehicle.Make + ' ' + result.Model + result.Cylinders">
+                            </option>
                         </template>
-                      </select>
-                   
-                    <button class="btn3"
-                        @click="deleteVehicle(currentVehicle)">Select this Vehicle</button>
-                    </div>
-                
+                    </select>
+
+                    <button class="btn3" @click="deleteVehicle(currentVehicle)">Select this Vehicle</button>
+                </div>
+
                 <p x-text="searchResult.Model"></p>
 
             </div>
@@ -63,13 +65,13 @@
 
                 <select x-model="vehicleSelection" class="selectionBox">
                     <template x-for="vehicle in myVehicles" :key="vehicle.registration">
-                      <option :value="vehicle.registration" x-text="vehicle.make + ' ' + vehicle.model + ' ' + vehicle.registration"></option>
+                        <option :value="vehicle.registration"
+                            x-text="vehicle.make + ' ' + vehicle.model + ' ' + vehicle.registration"></option>
                     </template>
-                  </select>
-               
-                <button class="btn2"
-                    @click="deleteVehicle(currentVehicle)">Delete Vehicle</button>
-                </div>
+                </select>
+
+                <button class="btn2" @click="deleteVehicle(currentVehicle)">Delete Vehicle</button>
+            </div>
 
 
 
@@ -113,18 +115,22 @@
                 @click="showSection4=!showSection4;showSection1=false;showSection2=false;showSection3=false;showSection5=false;showSection6=false;let users=viewAccount()">Account
                 and Personal Details</button>
             <div x-show.transition="showSection4" class="inputblock">
-                
+
                 <div>
                     <template x-for="user in users">
-                        <p x-text="user.user_name + ' ' + user.user_surname + ' ' + user.email_address + ' +' + user.sharing_whatsapp "></p>
+                        <p
+                            x-text="user.user_name + ' ' + user.user_surname + ' ' + user.email_address + ' +' + user.sharing_whatsapp ">
+                        </p>
 
 
                     </template>
                 </div>
             </div>
 
-            <button class="btn1" @click="showSection5=!showSection5;showSection1=false;showSection2=false;showSection3=false;showSection4=false;showSection6=false;let users=viewAccount()">Sharing Details</button>
-            <button class="btn1" @click="signOut()">Sign Out</button>
+            <button class="btn1"
+                @click="showSection5=!showSection5;showSection1=false;showSection2=false;showSection3=false;showSection4=false;showSection6=false;let users=viewAccount()">Sharing
+                Details</button>
+            <button class="btn1" @click="signOut()" onclick="window.location.href='index.html';">Sign Out</button>
         </span>
     </div>
 

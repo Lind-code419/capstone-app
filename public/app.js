@@ -35,6 +35,7 @@ document.addEventListener("alpine:init", () => {
             showHistorySection1:false,
             distanceEntered: 0,
             taxResult:0,
+            showSubSection2:false,
 
 
 

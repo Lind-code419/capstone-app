@@ -62,19 +62,20 @@
 
                 </template>
             </select>
+            <button class="btn1" @click="viewHistory(resultsPerPage)">View </button>
 
         </table>
         <td>
-            <button class="btn1" @click="viewHistory(resultsPerPage)">View </button>
+           
 
             <button class="btn1" @click="showHistorySection1=!showHistorySection1; viewHistoryTotals()">View Summary
                 (Total of all Journeys)</button>
 
-            <div x-show.transition="showSection3" class="inputblock">
+            <div x-show.transition="showHistorySection1" class="inputblock">
 
                 <table class="table">
                     <tr>
-                        <th>Date</th>
+                        
                         <th>Registration</th>
                         <th>Distance</th>
                         <th>CO2 emission</th>
@@ -85,10 +86,10 @@
                     <template x-for="total in historyTotals">
                         <tr>
                             <td x-text="total.registration"></td>
-                            <td x-text="total.distance_traveled"></td>
-                            <td x-text="total.co2_emitted"></td>
-                            <td x-text="total.calculated_tax"></td>
-                            <td x-text="total.score"></td>
+                            <td x-text="total.total_distance"></td>
+                            <td x-text="total.total_co2"></td>
+                            <td x-text="total.total_tax"></td>
+                            <td x-text="total.avg_score"></td>
 
                         </tr>
 

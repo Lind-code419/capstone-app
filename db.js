@@ -40,14 +40,14 @@ export async function change_vehicle(registration) {
 
 
 export async function search_vehicles(make, model) { //async marks as special function with await
-    let sql = `select * from vehicles where make =? and model =?`;
+    let sql = `select * from vehicles where make =? or model =?`;
 
     let result = await db.all(sql, [make, model]); //find out how to check for empty array
-    if (result = []) {
+    /*if (result = []) {
         sql = `select * from vehicles where make =? or model =?`;
         result = await db.all(sql, [make, model]);
     }
-
+*/
     return result;
 
 }

@@ -32,7 +32,7 @@
         <p>Type in distance in km:</p>
         <p x-text="distanceEntered"></p>
         <input type="text" x-model="distanceEntered">
-        <p><button class="btn3" @click="calculateTax(distanceEntered); showSubSection2=!showSubSection2">Calculate
+        <p><button class="btn3" @click="calculateTax(distanceEntered); showSubSection2=true">Calculate
                 tax</button></p>
                 <div x-show="showSubSection2">
                     <p x-text="'This journey : R ' + taxResult.toFixed(2)"></p>

@@ -51,6 +51,7 @@ app.post('/api/search_vehicles', async (req,res) => {
     make = make.toUpperCase();    
     const model = req.body.model;
     const searchResult = await search_vehicles(make,model);
+    console.log('SEARCH RESULTS:',searchResult);
     res.json({
         
         searchResult

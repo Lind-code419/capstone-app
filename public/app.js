@@ -26,7 +26,7 @@ document.addEventListener("alpine:init", () => {
             signedIn: 0,
             username: '',
             password: '',
-            searchResult: [],
+            searchResult_alpine: [],
             cylinders: '',
             users: [],
             vehicleSelection: '',
@@ -36,6 +36,7 @@ document.addEventListener("alpine:init", () => {
             distanceEntered: 0,
             taxResult:0,
             showSubSection2:false,
+            carSelection:'',
 
 
 
@@ -93,9 +94,11 @@ document.addEventListener("alpine:init", () => {
 
                     })
                     .then(result => {
-                        this.searchResult = result.data.searchResult;
+                        this.searchResult_alpine = result.data.searchResult;
                         console.log('here')
-                        console.log(this.searchResult);
+                        console.log(result.data.searchResult[0]);
+                        console.log('check this');
+                        console.log(this.searchResult_alpine);
                     })
 
             },

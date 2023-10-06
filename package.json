@@ -28,7 +28,7 @@
   "scripts": {
     "dev": "nodemon",
     "test": "",
-    "start": "index.js"
+    "start": "node index.js"
   },
   "dependencies": {
   "express": "^4.18.2",

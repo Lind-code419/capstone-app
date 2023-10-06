@@ -29,6 +29,7 @@
     <button class="btn1" @click="viewMyVehicles()">Select Vehicle</button>
 
     <div class="inputblock">
+        <p x-text="vehicleSelection"></p>
         <p>Type in distance in km:</p>
         <p x-text="distanceEntered"></p>
         <input type="text" x-model="distanceEntered">

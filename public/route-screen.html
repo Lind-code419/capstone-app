@@ -7,11 +7,13 @@
   <title>Route</title>
 
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="leaflet.css">
 
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.0/dist/cdn.min.js"></script>
   <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
   <script src="app.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+  <script src="leaflet.js"></script>
+
 
 
 </head>
@@ -19,11 +21,10 @@
 <body x-data="appData" class="pages">
 
   <div class="screenHeader2">
-    <button class="navbtn1" onclick="window.location.href='index.html';"><img src="Arrow 1.svg"
-        alt="Back"></button>
+    <button class="navbtn1" onclick="window.location.href='index.html';"><img src="Arrow 1.svg" alt="Back"></button>
 
-    <button class="navbtn2" onclick="window.location.href='settings-screen.html';"><img
-        src="navicon-svgrepo-com.svg" style="height: 24px; width: 28; border: 0.5em ;" alt="Settings"></button>
+    <button class="navbtn2" onclick="window.location.href='settings-screen.html';"><img src="navicon-svgrepo-com.svg"
+        style="height: 24px; width: 28; border: 0.5em ;" alt="Settings"></button>
 
   </div>
 
@@ -35,32 +36,18 @@
 
       <button class="btn2" @click="endRoute">End Journey</button>
     </div>
-    <iframe width="575" height="850" frameborder="0.5em" scrolling="no" marginheight="0.5em" marginwidth="0.5em"
-      src="https://www.openstreetmap.org/export/embed.html?bbox=-62.04673002474011%2C16.95487694424327%2C-61.60521696321666%2C17.196751341562923&amp;layer=mapnik"
-      style="border: 1px solid black"></iframe>
-    <br /><small><a href="https://www.openstreetmap.org/#map=12/17.0759/-61.8260">View Larger Map</a></small>
+    
+    <div id="map" style="width: 600px; height: 850px;text-align: center;"></div>
+    
 
 
 
-    <button onclick="getLocation()">Try It</button>
+    <button @click="getLocationUpdate()">Try It</button>
+    <p x-text="latitude"></p>
+    <p x-text="longitude"></p>
     <p id="demo" style="color: white;"></p>
 
-    <script>
-      var x = document.getElementById("demo");
 
-      function getLocation() {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition);
-        } else {
-          x.innerHTML = "Geolocation is not supported by this browser.";
-        }
-      }
-
-      function showPosition(position) {
-        x.innerHTML = "Latitude: " + position.coords.latitude +
-          "<br>Longitude: " + position.coords.longitude;
-      }
-    </script>
 
 
 

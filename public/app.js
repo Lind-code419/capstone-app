@@ -4,8 +4,8 @@ document.addEventListener("alpine:init", () => {
         return {
 
             vehicles: [],
-            latitude: '',
-            longitude: '',
+            latitude: 0,
+            longitude: 0,
             currentVehicle: '',
             vehicleEmission: '',
             currentScore: '',
@@ -31,20 +31,27 @@ document.addEventListener("alpine:init", () => {
             users: [],
             vehicleSelection: '',
             resultsPerPage: 0,
-            historyTotals:[],
-            showHistorySection1:false,
+            historyTotals: [],
+            showHistorySection1: false,
             distanceEntered: 0,
-            taxResult:0,
-            showSubSection2:false,
-            carSelection:'',
+            taxResult: 0,
+            showSubSection2: false,
+            carSelection: '',
+            position: '',
+            geoLoc: '',
+            watchID: '',
 
 
 
             init() {
                 currentDate = new Date();
                 console.log(currentDate);
+                this.viewMyVehicles();
                 initialPosition = 0;
                 this.viewHistory(10);
+                this.createMap();
+
+                console.log('initial position : ' + this.latitude);
                 console.log('Login-status: ' + this.signedIn);
                 axios
                     .get('/api/getcurrentvehicle/')
@@ -86,7 +93,7 @@ document.addEventListener("alpine:init", () => {
 
             searchVehicle(make, model) {
 
-                return axios
+                return axios ///this section works
                     .post('/api/search_vehicles', {
 
                         "make": `${make}`,
@@ -105,7 +112,7 @@ document.addEventListener("alpine:init", () => {
 
             viewHistory(resultsPerPage) {
 
-                return axios
+                return axios //this section works
                     .post('/api/all_vehicles/view_history', {
                         "resultsPerPage": `${resultsPerPage}`
 
@@ -130,9 +137,90 @@ document.addEventListener("alpine:init", () => {
 
             },
 
+            showLocation(position) {
+                this.latitude = position.coords.latitude;
+                this.longitude = position.coords.longitude;
+                console.log(this.latitude + ' ' + this.longitude);
+                alert("Latitude : " + latitude + " Longitude: " + longitude);
+            },
+
+            getLocationUpdate() {
+
+                if (navigator.geolocation) {
+
+                    // timeout at 60000 milliseconds (60 seconds)
+                    var options = { timeout: 60000 };
+                    geoLoc = navigator.geolocation;
+                    watchID = geoLoc.watchPosition(this.showLocation, this.errorHandler, options);
+                } else {
+                    alert("Browser does not support geolocation!");
+                }
+            },
+
+            errorHandler(err) {
+                if (err.code == 1) {
+                    alert("Error: Access is denied!");
+                } else if (err.code == 2) {
+                    alert("Error: Position is unavailable!");
+                }
+            },
+
+            onLocationFound(e) {
+                var radius = e.accuracy;
+
+                L.marker(e.latlng).addTo(map)
+                    .bindPopup("You are within " + radius + " meters from this point").openPopup();
+
+                L.circle(e.latlng, radius).addTo(map);
+
+            },
+
+
+
+            createMap() {
+                const map = L.map('map').fitWorld();
+
+                const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                }).addTo(map);
+
+                function onLocationFound(e) {
+                    const radius = e.accuracy / 2;
+
+                    const locationMarker = L.marker(e.latlng).addTo(map)
+                        .bindPopup(`Starting Point`).openPopup();
+
+                    //const locationCircle = L.circle(e.latlng, radius).addTo(map);
+                }
+
+                function onLocationError(e) {
+                    alert(e.message);
+                }
+
+                map.on('locationfound', onLocationFound);
+                map.on('locationerror', onLocationError);
+
+                map.locate({ setView: true, maxZoom: 16 });
+
+                /*
+                this.getLocationUpdate();
+                console.log(this.latitude);
+                var map = L.map('map').locate({setView: true, maxZoom: 16});//L.map('map').setView([this.latitude, this.longitude], 14);
+                mapLink =
+                  '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+                  map.on('locationfound', this.onLocationFound);
+                L.tileLayer(
+                  'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                  attribution: '&copy; ' + mapLink + ' Contributors',
+                  maxZoom: 18,
+                }).addTo(map);
+                L.marker(e.latlng).addTo(map); */
+            },
 
 
             startRoute() {
+                this.createMap();
 
                 alert('Journey Started!')
                 /*return axios
@@ -165,15 +253,15 @@ document.addEventListener("alpine:init", () => {
                         "score": 3.5
 
                     })
-                    //.then(result => { alert(`Journey Started!`); })
+                //.then(result => { alert(`Journey Started!`); })
                 //.then(result => { this.showCartData() })
 
 
 
             },
 
-            calculateTax(distanceEntered) {
-                 this.taxResult =this.distanceEntered * 0.2;
+            calculateTax(distanceEntered) { //this section works 
+                this.taxResult = this.distanceEntered * 0.2;
             },
 
 
@@ -190,7 +278,7 @@ document.addEventListener("alpine:init", () => {
 
             },
 
-            deleteVehicle(registration) {
+            deleteVehicle(registration) { //this section possibly works, requires testing
 
                 return axios
                     .post('/api/settings/delete_vehicle', {
@@ -209,7 +297,7 @@ document.addEventListener("alpine:init", () => {
 
 
 
-            signOut() {
+            signOut() { //sort of works
 
                 signedIn = 0;
                 console.log('logged out');

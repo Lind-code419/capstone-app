@@ -17,8 +17,8 @@
 
 <body x-data="appData" class="pages">
     <div class="screenHeader1">
-        <button class="navbtn2" onclick="window.location.href='settings-screen.html';"><img src="navicon-svgrepo-com.svg"
-                style="height: 24px; width: 28; border: 1em ; " alt="Settings"></button>
+        <button class="navbtn2" onclick="window.location.href='settings-screen.html';"><img
+                src="navicon-svgrepo-com.svg" style="height: 24px; width: 28; border: 1em ; " alt="Settings"></button>
     </div>
     <h1>Home</h1>
 
@@ -27,7 +27,10 @@
             <button class="btn1" onclick="window.location.href='tax-screen.html';">Calculate Tax</button>
             <button class="btn1" onclick="window.location.href='route-screen.html';">Track Journey</button>
             <button class="btn1" onclick="window.location.href='history-screen.html';">History</button>
-            <button class="btn1" onclick="window.location.href='optimal-screen.html';">Optimal Route</button>
+            <div x-show.transition="showSubSection1" class="inputblock">
+
+                <button class="btn1" onclick="window.location.href='optimal-screen.html';">Optimal Route</button>
+            </div>
         </span>
 
         <template x-if="signedIn==0">

@@ -181,7 +181,7 @@ document.addEventListener("alpine:init", () => {
                 const map = L.map('map').fitWorld();
 
                 const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    maxZoom: 19,
+                    maxZoom: 15,
                     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                 }).addTo(map);
 
@@ -201,7 +201,7 @@ document.addEventListener("alpine:init", () => {
                 map.on('locationfound', onLocationFound);
                 map.on('locationerror', onLocationError);
 
-                map.locate({ setView: true, maxZoom: 16 });
+                map.locate({ setView: true, Zoom: 15 });
 
                 /*
                 this.getLocationUpdate();
@@ -220,9 +220,10 @@ document.addEventListener("alpine:init", () => {
 
 
             startRoute() {
-                this.createMap();
+                this.getLocationUpdate();               
 
-                alert('Journey Started!')
+                alert('Journey Started! lat: ' + this.latitude);
+
                 /*return axios
                     .post('/api/price_plan/create ', {
                         "plan_name": `${planName}`,

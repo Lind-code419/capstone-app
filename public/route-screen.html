@@ -21,7 +21,7 @@
 <body x-data="appData" class="pages">
 
   <div class="screenHeader2">
-    <button class="navbtn1" onclick="window.location.href='index.html';"><img src="Arrow 1.svg" alt="Back"></button>
+    <button class="navbtn1" onclick="window.location.href='home.html';"><img src="Arrow 1.svg" alt="Back"></button>
 
     <button class="navbtn2" onclick="window.location.href='settings-screen.html';"><img src="navicon-svgrepo-com.svg"
         style="height: 24px; width: 28; border: 0.5em ;" alt="Settings"></button>
@@ -29,14 +29,16 @@
   </div>
 
 
-  <h2>Track Journey</h2>
-  <button class="btn1" @click="viewMyVehicles()">Select Vehicle</button>
-  <select x-model="vehicleSelection" class="selectionBox">
-    <template x-for="vehicle in myVehicles" :key="vehicle.registration">
-      <option :value="vehicle.registration" x-text="vehicle.make + ' ' + vehicle.model + ' ' + vehicle.registration">
-      </option>
-    </template>
-  </select>
+  <div>
+    <h2>Track Journey</h2>
+    <button class="btn1" @click="viewMyVehicles()">Select Vehicle</button>
+    <select x-model="vehicleSelection" class="selectionBox">
+      <template x-for="vehicle in myVehicles" :key="vehicle.registration">
+        <option :value="vehicle.registration" x-text="vehicle.make + ' ' + vehicle.model + ' ' + vehicle.registration">
+        </option>
+      </template>
+    </select>
+  </div>
 
 
   <div>
@@ -45,9 +47,8 @@
       <button class="btn2" @click="endRoute">End Journey</button>
     </div>
 
-    <div id="map" style="width: 600px; height: 850px;text-align: center;"></div>
-
-
+    
+    
 
 
     <!--<button @click="getLocationUpdate()">Try It</button>
@@ -55,18 +56,17 @@
     <p x-text="longitude"></p>
     <p id="demo" style="color: white;"></p>
     /!-->
-
-
-
-
-
-  </div>
-  <div class="inputblock">
     
+  </div>
+  <div id="map" class="main-map"></div>
+
+  <div class="inputblock">
+
     <p>Type in distance in km:</p>
     <p x-text="distanceTraveled"></p>
     <input type="text" x-model="distanceTraveled">
     <button class="btn3" @click="viewMyVehicles(distanceTraveled, vehicleSelection)">Add This Journey</button>
+  </div>
 </body>
 
 </html>

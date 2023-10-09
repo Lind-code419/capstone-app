@@ -273,16 +273,17 @@ document.addEventListener("alpine:init", () => {
             endRoute() {
 
                 alert('Journey Ended!');
+                var currentScore = Math.floor(Math.random() * 10);
                 return axios
                     .post('/api/current_vehicle/add_journey', {
                         "date": `${reformattedDate}` ,
                         "model": "DB9",
-                        "registration": "CB439GP",
-                        "distance_traveled": 52.3,
+                        "registration": `${this.vehicleSelection}`,
+                        "distance_traveled": `${this.distanceEntered}`,
                         "co2_emitted": 6338,
                         "calculated_tax": 26.51,
-                        "currently_selected": 0,
-                        "score": 3.5
+                        "currently_selected": 1, //can you call method here?
+                        "score": currentScore
 
                     })
                 //.then(result => { alert(`Journey Started!`); })

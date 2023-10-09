@@ -40,7 +40,7 @@ document.addEventListener("alpine:init", () => {
             resultsPerPage: 0,
             historyTotals: [],
             showHistorySection1: false,
-            distanceEntered: 0,
+            distanceTraveled: 0,
             taxResult: 0,
             carSelection: '',
             position: '',
@@ -52,6 +52,7 @@ document.addEventListener("alpine:init", () => {
             flatpickrInstance: null,
             fuelType:'',
             vehicleSelectionTax:'',
+            distanceEntered:'',
 
 
 
@@ -274,7 +275,7 @@ document.addEventListener("alpine:init", () => {
                 alert('Journey Ended!');
                 return axios
                     .post('/api/current_vehicle/add_journey', {
-                        "date": 25092023,
+                        "date": `${reformattedDate}` ,
                         "model": "DB9",
                         "registration": "CB439GP",
                         "distance_traveled": 52.3,
@@ -339,7 +340,29 @@ document.addEventListener("alpine:init", () => {
                 return axios
                     .post('/api/settings/delete_vehicle', {
 
-                        "registration": `${registration}`
+                        "registration": `${registration}`,
+
+                    })
+                    .then(result => {
+
+
+
+                    })
+
+            },
+
+            addJourney(registration) { //this section possibly works, requires testing
+
+                return axios
+                    .post('/api/current_vehicle/add_journey', {
+
+                        "date":`${reformattedDate}`, 
+                        "model":"DB9",
+                        "distance_traveled":34.3, 
+                        "co2_emitted":3424, 
+                        "calculated_tax":15.77, 
+                        "currently_selected":1, 
+                        "score":4
 
                     })
                     .then(result => {

@@ -64,9 +64,9 @@
   <div class="inputblock">
     
     <p>Type in distance in km:</p>
-    <p x-text="distanceEntered"></p>
-    <input type="text" x-model="distanceEntered">
-    <button class="btn3" @click="viewMyVehicles()">Add This Journey</button>
+    <p x-text="distanceTraveled"></p>
+    <input type="text" x-model="distanceTraveled">
+    <button class="btn3" @click="viewMyVehicles(distanceTraveled, vehicleSelection)">Add This Journey</button>
 </body>
 
 </html>

@@ -7,6 +7,7 @@
     <title>History</title>
 
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.0/dist/cdn.min.js"></script>
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
@@ -67,7 +68,7 @@
 
         </table>
         <td>
-           
+
 
             <button class="btn1" @click="showHistorySection1=!showHistorySection1; viewHistoryTotals()">View Summary
                 (Total of all Journeys)</button>
@@ -76,7 +77,7 @@
 
                 <table class="table">
                     <tr>
-                        
+
                         <th>Registration</th>
                         <th>Distance</th>
                         <th>CO2 emission</th>
@@ -100,11 +101,26 @@
             </div>
         </td>
         <div><button class="btn1" @click="showSubSection4 =!showSubSection4">Share</button>
-            <div x-show.transition="showSubSection3" class="inputblock">
+            <div x-show.transition="showSubSection4" class="inputblock" x-init="
+            flatpickrInstance = flatpickr($refs.dateInput, {
+              altInput: true,
+              altFormat: 'F j, Y',
+              dateFormat: 'Y-m-d',
+              onChange: (selectedDates, dateStr, _) => {
+                currentDate = dateStr;
+              }
+            })
+          ">
+
+                <input x-ref="dateInput" type="text" placeholder="YYYY-MM-DD" class="w-full" />
+
+                <button @click="currentDate = ''; flatpickrInstance.clear()">
+                    Clear
+                </button>
 
 
             </div>
-        
+
         </div>
 
 

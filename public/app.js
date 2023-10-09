@@ -23,6 +23,10 @@ document.addEventListener("alpine:init", () => {
             showSubSection4: false,
             searchVehicle: '',
             currentDate: '',
+            currentDayNumber:'',
+            currentMonth:'',
+            currentYear:'',
+            reformattedDate:'',
             make: '',
             model: '',
             myVehicles: [],
@@ -46,13 +50,21 @@ document.addEventListener("alpine:init", () => {
             registrationNumber:'',
             currentDatePick:'',
             flatpickrInstance: null,
+            fuelType:'',
 
 
 
             init() {
                 currentDate = new Date();
                 console.log(currentDate);
-                this.viewMyVehicles();
+                this.currentDayNumber = currentDate.getDate();
+                console.log(this.currentDayNumber);
+                this.currentMonth = currentDate.getMonth() + 1;
+                console.log(this.currentMonth);
+                this.currentYear = currentDate.getFullYear();
+                console.log(this.currentYear);
+                this.reformattedDate = `${this.currentDayNumber}${this.currentMonth}${this.currentYear}`;
+                console.log('Date = ' + this.reformattedDate);
                 initialPosition = 0;
                 this.viewHistory(10);
                 //this.getLocationUpdate();

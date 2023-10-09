@@ -37,15 +37,16 @@
                 <p x-text="model"></p>
                 <input type="text" x-model="model">
 
-                <p><button class="btn3" @click="let searchResult = searchVehicle(make,model); showSubSection1=!showSubSection1">Search
+                <p><button class="btn3"
+                        @click="let searchResult = searchVehicle(make,model); showSubSection1=!showSubSection1">Search
                         for vehicle</button></p>
                 <div x-show.transition="showSubSection1">
 
                     <select x-model="carSelection" class="selectionBox">
-                        <template x-for="vehicle in searchResult_alpine" >
-                           
+                        <template x-for="vehicle in searchResult_alpine">
+
                             <option :value="vehicle.Model"
-                                x-text="vehicle.Make + ' ' + vehicle.Model + ' ' + vehicle.Cylinders + ' cylinders ' + vehicle.Engine_Size_L + ' L ' " >
+                                x-text="vehicle.Make + ' ' + vehicle.Model + ' ' + vehicle.Cylinders + ' cylinders ' + vehicle.Engine_Size_L + ' L ' ">
                             </option>
                         </template>
                     </select>
@@ -54,8 +55,25 @@
                     <div x-show.transition="showSubSection2">
                         <span>Type in registration number: (No spaces)</span>
                         <p x-text="registrationNumber"> </p>
-                        <span><input type="text" x-model="registrationNumber"><button class="btn3" @click="showSubSection2 =!showSubSection2">Add to My Vehicles</button></span>
-                       
+                        <span><input type="text" x-model="registrationNumber"></span>
+                        <p>Select Fuel Type: </p>
+                        <select x-model="fuelType" class="selectionBox">
+
+                            <option value="X">Fuel Type</option>
+                            <option value="X">Regular 91/93</option>
+                            <option value="E">10 % Ethanol</option>
+                            <option value="Z">Premium 95+</option>
+                            <option value="D">Diesel</option>
+
+                            </template>
+                        </select>
+
+
+                        <button class="btn3" @click="showSubSection2 =!showSubSection2">Add to My
+                            Vehicles</button>
+
+
+
 
                     </div>
 
@@ -89,7 +107,7 @@
                     </div>
 
                 </div>
-          
+
 
             </div>
 

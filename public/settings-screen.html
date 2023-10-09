@@ -39,7 +39,7 @@
 
                 <p><button class="btn3" @click="let searchResult = searchVehicle(make,model); showSubSection1=!showSubSection1">Search
                         for vehicle</button></p>
-                <div x-show.transition="showSubSection1" class="inputblock">
+                <div x-show.transition="showSubSection1">
 
                     <select x-model="carSelection" class="selectionBox">
                         <template x-for="vehicle in searchResult_alpine" >
@@ -50,7 +50,44 @@
                         </template>
                     </select>
 
-                    <button class="btn3" @click="deleteVehicle(currentVehicle)">Select this Vehicle</button>
+                    <button class="btn3" @click="showSubSection2 =!showSubSection2">Select this Vehicle</button>
+                    <div x-show.transition="showSubSection2">
+                        <span>Type in registration number: (No spaces)</span>
+                        <p x-text="registrationNumber"> </p>
+                        <span><input type="text" x-model="registrationNumber"><button class="btn3" @click="showSubSection2 =!showSubSection2">Add to My Vehicles</button></span>
+                       
+
+                    </div>
+
+                    <button class="btn3" @click="showSubSection3 =!showSubSection3">Add Vehicle Not on List</button>
+                    <div x-show.transition="showSubSection3">
+                        <p>Type in registration number:</p>
+                        <p x-text="registrationNumber"></p>
+                        <input type="text" x-model="registrationNumber">
+
+                        <p>Type in Make:</p>
+                        <p x-text="registrationNumber"></p>
+                        <input type="text" x-model="registrationNumber">
+
+                        <p>Type in Model:</p>
+                        <p x-text="registrationNumber"></p>
+                        <input type="text" x-model="registrationNumber">
+
+                        <p>Type in Combined (City and Highway combined) Fuel consumption in L/100Km:</p>
+                        <p x-text="registrationNumber"></p>
+                        <input type="text" x-model="registrationNumber">
+
+
+                        <p>Type in Engine Size in L:</p>
+                        <p x-text="registrationNumber"></p>
+                        <input type="text" x-model="registrationNumber">
+
+
+
+
+
+                    </div>
+
                 </div>
           
 

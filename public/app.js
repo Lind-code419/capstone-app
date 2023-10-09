@@ -18,6 +18,9 @@ document.addEventListener("alpine:init", () => {
             showSection5: false,
             showSection6: false,
             showSubSection1: false,
+            showSubSection2: false,
+            showSubSection3: false,
+            showSubSection4: false,
             searchVehicle: '',
             currentDate: '',
             make: '',
@@ -35,11 +38,14 @@ document.addEventListener("alpine:init", () => {
             showHistorySection1: false,
             distanceEntered: 0,
             taxResult: 0,
-            showSubSection2: false,
             carSelection: '',
             position: '',
             geoLoc: '',
             watchID: '',
+            currentCoordinates:[],
+            registrationNumber:'',
+            currentDatePick:'',
+            flatpickrInstance: null,
 
 
 
@@ -49,6 +55,7 @@ document.addEventListener("alpine:init", () => {
                 this.viewMyVehicles();
                 initialPosition = 0;
                 this.viewHistory(10);
+                //this.getLocationUpdate();
                 this.createMap();
 
                 console.log('initial position : ' + this.latitude);
@@ -140,6 +147,11 @@ document.addEventListener("alpine:init", () => {
             showLocation(position) {
                 this.latitude = position.coords.latitude;
                 this.longitude = position.coords.longitude;
+                currentCoordinates[0] =latitude;
+                currentCoordinates[1] =longitude;
+                console.log(this.currentCoordinates[0]);
+
+                //this.currentCoordinates.push(position.coords.longitude);
                 console.log(this.latitude + ' ' + this.longitude);
                 alert("Latitude : " + latitude + " Longitude: " + longitude);
             },
@@ -152,6 +164,7 @@ document.addEventListener("alpine:init", () => {
                     var options = { timeout: 60000 };
                     geoLoc = navigator.geolocation;
                     watchID = geoLoc.watchPosition(this.showLocation, this.errorHandler, options);
+                    console.log(this.watchID);
                 } else {
                     alert("Browser does not support geolocation!");
                 }
@@ -177,7 +190,8 @@ document.addEventListener("alpine:init", () => {
 
 
 
-            createMap() {
+            createMap(currentCoordinates) {
+                //var map = L.map('map').setView(this.currentCoordinates, 13);
                 const map = L.map('map').fitWorld();
 
                 const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -188,10 +202,12 @@ document.addEventListener("alpine:init", () => {
                 function onLocationFound(e) {
                     const radius = e.accuracy / 2;
 
+                    //var marker = L.marker([this.currentCoordinates]).addTo(map)
                     const locationMarker = L.marker(e.latlng).addTo(map)
                         .bindPopup(`Starting Point`).openPopup();
 
                     //const locationCircle = L.circle(e.latlng, radius).addTo(map);
+                    
                 }
 
                 function onLocationError(e) {
@@ -202,6 +218,7 @@ document.addEventListener("alpine:init", () => {
                 map.on('locationerror', onLocationError);
 
                 map.locate({ setView: true, Zoom: 15 });
+                //var map = L.map('map').setView([51.505, -0.09], 13);
 
                 /*
                 this.getLocationUpdate();

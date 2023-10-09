@@ -40,7 +40,7 @@ export async function change_vehicle(registration) {
 
 
 export async function search_vehicles(make, model) { //async marks as special function with await
-    let sql = `select * from vehicles where make =? or model =?`;
+    let sql = `select * from vehicles where make=? or model=?`;
 
     let result = await db.all(sql, [make, model]); //find out how to check for empty array
     /*if (result = []) {
@@ -66,14 +66,14 @@ export async function view_users() { //async marks as special function with awai
 
 export async function historyDb(numberPerPage) { //async marks as special function with await
     const sql = `select * from history limit ?`;
-    const result = await db.all(sql,[numberPerPage]);
+    const result = await db.all(sql, [numberPerPage]);
     return result;
 
 }
 
 export async function add_journeyDB(date, model, registration, distance_traveled, co2_emitted, calculated_tax, currently_selected, score) { //async marks as special function with await
     const sql = `insert into history (date, model, registration, distance_traveled, co2_emitted, calculated_tax, currently_selected, score) values (?, ?, ?, ?, ?, ?, ?, ?)`;
-    const result = await db.run(sql,[date, model, registration, distance_traveled, co2_emitted, calculated_tax, currently_selected, score]);
+    const result = await db.run(sql, [date, model, registration, distance_traveled, co2_emitted, calculated_tax, currently_selected, score]);
     return result;
 
 }
@@ -82,6 +82,22 @@ export async function history_totalDB() { //async marks as special function with
     const sql = `SELECT registration, model, ROUND(SUM(distance_traveled),2) as total_distance, SUM(co2_emitted) as total_co2, ROUND(SUM(calculated_tax),2) as total_tax, ROUND(AVG(score),2) as avg_score 
     FROM history 
     GROUP BY registration;`;
+    const result = await db.all(sql);
+    return result;
+
+}
+
+export async function add_vehicleDB() { //async marks as special function with await
+    const sql = `INSERT INTO my_vehicles (make, model, engine_size, cylinders, transmission, fuel_type, city_consumption, highway_consumption, combined_consumption_lp100km,combined_consumption_mpg,carbon_emissions,registration,currently_selected,total_jorneys) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+    
+    const result = await db.run(sql);
+    return result;
+
+}
+
+export async function selectedDateDB() { //async marks as special function with await
+    const sql = `SELECT * FROM history WHERE date =?`;
+    
     const result = await db.all(sql);
     return result;
 

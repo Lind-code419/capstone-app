@@ -10,6 +10,7 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.0/dist/cdn.min.js"></script>
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="app.js"></script>
 
 
@@ -98,7 +99,13 @@
 
             </div>
         </td>
-        <div><button class="btn1" @click="viewHistory(currentVehicle, 5)">Share</button></div>
+        <div><button class="btn1" @click="showSubSection4 =!showSubSection4">Share</button>
+            <div x-show.transition="showSubSection3" class="inputblock">
+
+
+            </div>
+        
+        </div>
 
 
 

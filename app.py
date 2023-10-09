@@ -2,7 +2,12 @@ from flask import Flask, render_template, request
 import pickle
 import numpy as np
 
+from flask_cors import CORS, cross_origin
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+
+#app = Flask(__name__)
 
 # Load the pickled model
 with open('reg.pkl', 'rb') as file:

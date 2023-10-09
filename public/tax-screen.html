@@ -20,7 +20,7 @@
                 src="Arrow 1.svg"></button>
     </div>
     <h2>Home</h2>
-    <select x-model="vehicleSelection" class="selectionBox">
+    <select x-model="vehicleSelectionTax" class="selectionBox">
         <template x-for="vehicle in myVehicles" :key="vehicle.registration">
             <option :value="vehicle.registration"
                 x-text="vehicle.make + ' ' + vehicle.model + ' ' + vehicle.registration"></option>

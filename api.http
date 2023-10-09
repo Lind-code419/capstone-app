@@ -16,6 +16,16 @@ GET http://localhost:4011/api/view_users
 content-type: application/json
 
 ###
+POST http://localhost:4011/api/search_vehicles
+content-type: application/json
+
+{
+    "make" : "",
+    "model": "ILX"
+ 
+}
+
+###
 
 GET http://localhost:4011/api/view_all_vehicles
 
@@ -37,15 +47,6 @@ content-type: application/json
  
 }
 
-###
-POST http://localhost:4011/api/search_vehicles
-content-type: application/json
-
-{
-    "make" : "ACURA",
-    "model": "ILX"
- 
-}
 
 
 

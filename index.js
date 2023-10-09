@@ -3,7 +3,7 @@ import express from 'express';
 //import sqlite3 from 'sqlite3';
 
 console.log('START');
-import { my_vehicles, current_vehicle, search_vehicles, change_vehicle, delete_vehicle, view_users, historyDb, add_journeyDB, history_totalDB } from './db.js'
+import { my_vehicles, current_vehicle, search_vehicles, change_vehicle, delete_vehicle, view_users, historyDb, add_journeyDB, history_totalDB, getEmission } from './db.js'
 
 
 const app = express();
@@ -193,15 +193,15 @@ app.post('/api/settings/new_vehicle', async (req, res) =>{
     })
 });
 
-app.post('/api/caluculate_tax', async (req, res) =>{
+app.post('/api/all_vehicles/get_car_emissions', async (req, res) =>{
     //const usage = req.body.usage;
-    const id = req.body.id
+    const vehicle_selection_emission = req.body.selectedVehicleTax;
+    const emissions = await getEmission(vehicle_selection_emission)
     
-    //await deletePlan(id)
-    //
+    
     res.json({
         status: 'success',
-        emissions: 184,
+        emissions,
     })
 });
 

@@ -77,7 +77,7 @@
 
                     </div>
 
-                    <button class="btn3" @click="showSubSection3 =!showSubSection3">Add Vehicle Not on List</button>
+                    <button class="btn3" @click="showSubSection3 =true">Add Vehicle Not on List</button>
                     <div x-show.transition="showSubSection3">
                         <p>Type in registration number:</p>
                         <p x-text="registrationNumber"></p>
@@ -99,6 +99,24 @@
                         <p>Type in Engine Size in L:</p>
                         <p x-text="registrationNumber"></p>
                         <input type="text" x-model="registrationNumber">
+
+                        <p>Select Fuel Type: </p>
+                        <select x-model="fuelType" class="selectionBox">
+
+                            <option value="X">Fuel Type</option>
+                            <option value="X">Regular 91/93</option>
+                            <option value="E">10 % Ethanol</option>
+                            <option value="Z">Premium 95+</option>
+                            <option value="D">Diesel</option>
+
+                            </template>
+                        </select>
+
+
+                        <button class="btn3" @click="showSubSection2 =!showSubSection2">Add to My
+                            Vehicles</button>
+
+
 
 
 

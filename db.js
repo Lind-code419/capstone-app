@@ -103,6 +103,14 @@ export async function selectedDateDB() { //async marks as special function with 
 
 }
 
+export async function getEmission(registration) { //async marks as special function with await
+    const sql = `SELECT carbon_emissions FROM my_vehicles WHERE registration=?`;
+    
+    const result = await db.run(sql, [registration]);
+    return result;
+
+}
+
 /*
 
 Why aren't export functions arrow functions despite being async?

@@ -51,6 +51,7 @@ document.addEventListener("alpine:init", () => {
             currentDatePick:'',
             flatpickrInstance: null,
             fuelType:'',
+            vehicleSelectionTax:'',
 
 
 
@@ -290,21 +291,46 @@ document.addEventListener("alpine:init", () => {
 
             },
 
-            calculateTax(distanceEntered) { //this section works 
+            calculateTax(distanceEntered,vehicleSelectionTax) { //this section works 
                 this.taxResult = this.distanceEntered * 0.2;
-            },
-
-
-
-            addVehicle() {
 
                 return axios
-                    .post('/api/settings/add_vehicle', {
+                    .post('/api/all_vehicles/get_car_emissions', {
+                        "selectedVehicleTax": `${selectedVehicleTax}`
+
+                    })
+                    .then(result => {
+                        this.vehicleEmission = result.data.emission;//same as primary key?
+                        console.log(result.data.emission);
+                    })
+                    
+                },
+
+
+
+            addExistingVehicle() {
+
+                return axios
+                    .post('/api/settings/add_existing_vehicle', {
 
                         "id": `${vehicleID}`
 
                     })
                     .then(result => { alert(`Plan ${planID} deleted`); this.init(); })
+
+            },
+
+            addNewVehicle() {
+
+                return axios
+                    .post('/api/settings/add_new_vehicle', {
+
+                        "id": `${vehicleID}`
+
+                    })
+                    .then(result => { alert(`Plan ${planID} deleted`); this.init(); })
+
+                    //how to put two or more axios calls in same function
 
             },
 

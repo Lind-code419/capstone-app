@@ -1,6 +1,7 @@
 import express from 'express';
 //import * as sqlite from 'sqlite';
 //import sqlite3 from 'sqlite3';
+import cors from 'cors';
 
 console.log('START');
 import { my_vehicles, current_vehicle, search_vehicles, change_vehicle, delete_vehicle, view_users, historyDb, add_journeyDB, history_totalDB, getEmission } from './db.js'
@@ -10,6 +11,7 @@ const app = express();
 const PORT = process.env.PORT || 4011;
 app.listen(PORT, () => `Server started ${PORT}`)
 
+app.use(cors());
 app.use(express.static('public'))
 app.use(express.json())
 

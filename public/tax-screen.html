@@ -20,7 +20,7 @@
                 src="Arrow 1.svg"></button>
     </div>
     <h2>Home</h2>
-    <select x-model="vehicleSelectionTax" class="selectionBox">
+    <select x-model="selectedVehicleTax" class="selectionBox">
         <template x-for="vehicle in myVehicles" :key="vehicle.registration">
             <option :value="vehicle.registration"
                 x-text="vehicle.make + ' ' + vehicle.model + ' ' + vehicle.registration"></option>
@@ -33,7 +33,7 @@
         <p>Type in distance in km:</p>
         <p x-text="distanceEntered"></p>
         <input type="text" x-model="distanceEntered">
-        <p><button class="btn3" @click="calculateTax(distanceEntered); showSubSection2=true">Calculate
+        <p><button class="btn3" @click="calculateTax(distanceEntered,selectedVehicleTax); showSubSection2=true">Calculate
                 tax</button></p>
                 <div x-show="showSubSection2">
                     <p x-text="'This journey : R ' + taxResult.toFixed(2)"></p>

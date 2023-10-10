@@ -84,21 +84,21 @@
                         <input type="text" x-model="registrationNumber">
 
                         <p>Type in Make:</p>
-                        <p x-text="registrationNumber"></p>
-                        <input type="text" x-model="registrationNumber">
+                        <p x-text="makeAlpine"></p>
+                        <input type="text" x-model="makeAlpine">
 
                         <p>Type in Model:</p>
-                        <p x-text="registrationNumber"></p>
-                        <input type="text" x-model="registrationNumber">
+                        <p x-text="modelAlpine"></p>
+                        <input type="text" x-model="modelAlpine">
 
                         <p>Type in Combined (City and Highway combined) Fuel consumption in L/100Km:</p>
-                        <p x-text="registrationNumber"></p>
-                        <input type="text" x-model="registrationNumber">
+                        <p x-text="combinedFuelConsumption"></p>
+                        <input type="text" x-model="combinedFuelConsumption">
 
 
                         <p>Type in Engine Size in L:</p>
-                        <p x-text="registrationNumber"></p>
-                        <input type="text" x-model="registrationNumber">
+                        <p x-text="engineSize"></p>
+                        <input type="text" x-model="engineSize">
 
                         <p>Select Fuel Type: </p>
                         <select x-model="fuelType" class="selectionBox">
@@ -112,9 +112,14 @@
                             </template>
                         </select>
 
+                        <p x-text="'Predicted Emissions: ' + predictedEmissions + 'g/Km'"></p>
+                        <span><button class="btn3" @click="predictVehicleEmissions(fuelType, engineSize, combinedFuelConsumption)">Predict emissions for this
+                                Vehicle</button>
 
-                        <button class="btn3" @click="showSubSection2 =!showSubSection2">Add to My
-                            Vehicles</button>
+
+                            <button class="btn3" @click="addNewVehicle(makeAlpine, modelAlpine, engineSize, combinedFuelConsumption)">Add to My
+                                Vehicles</button></span>
+
 
 
 

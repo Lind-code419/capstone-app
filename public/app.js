@@ -53,6 +53,12 @@ document.addEventListener("alpine:init", () => {
             fuelType:'',
             vehicleSelectionTax:'',
             distanceEntered:'',
+            combinedFuelConsumption:'',
+            engineSize:'',
+            makeAlpine:'',
+            modelAlpine:'',
+            selectedVehicleTax:'',
+            predictedEmissions:'',
 
 
 
@@ -293,7 +299,7 @@ document.addEventListener("alpine:init", () => {
 
             },
 
-            calculateTax(distanceEntered,vehicleSelectionTax) { //this section works 
+            calculateTax(distanceEntered, selectedVehicleTax) { //this section works 
                 this.taxResult = this.distanceEntered * 0.2;
 
                 return axios
@@ -322,10 +328,30 @@ document.addEventListener("alpine:init", () => {
 
             },
 
+           async predictVehicleEmissions(engineSize, fuelType, combinedFuelConsumption) {
+                const bodyFormData = new FormData();
+                bodyFormData.append('engine_size', `${engineSize}`);
+                bodyFormData.append('fuel_type', `${fuelType}`);
+                bodyFormData.append('consumption', `${combinedFuelConsumption}`);
+
+                const response = await axios({
+                    method: 'post',
+                    url: 'https://ml-api-eqxs.onrender.com/predict',
+                    data: bodyFormData,
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        'Content-Type': `multipart/form-data`
+                    },
+                });
+                console.log(response);
+            },
+
             addNewVehicle() {
 
+                const formData = new FormData();
+
                 return axios
-                    .post('/api/settings/add_new_vehicle', {
+                    .post('https://ml-api-eqxs.onrender.com/predict', {
 
                         "id": `${vehicleID}`
 
@@ -354,6 +380,20 @@ document.addEventListener("alpine:init", () => {
 
             addJourney(registration) { //this section possibly works, requires testing
 
+                var currentScore = Math.floor(Math.random() * 10);
+                return axios
+                    .post('/api/current_vehicle/add_journey', {
+                        "date": `${reformattedDate}` ,
+                        "model": "DB9",
+                        "registration": `${this.vehicleSelection}`,
+                        "distance_traveled": `${this.distanceEntered}`,
+                        "co2_emitted": 6338,
+                        "calculated_tax": 26.51,
+                        "currently_selected": 1, //can you call method here?
+                        "score": currentScore
+
+                    })
+
                 return axios
                     .post('/api/current_vehicle/add_journey', {
 
@@ -371,6 +411,12 @@ document.addEventListener("alpine:init", () => {
 
 
                     })
+
+                    
+
+            },
+
+            getCO2emitted() {
 
             },
 

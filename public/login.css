@@ -1,45 +1,45 @@
 .loginbody {
-    background-image: url(./logo.jpeg);
-    background-size: cover;
-    background-position: center;
-    font-family: Arial, sans-serif;
-  }
-  
-  .container {
-    width: 300px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  h2 {
-    text-align: center;
-  }
-  
-  input[type="text"],
-  input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  .logo {
-    display: block;
-    margin: 20px auto;
-  }
+  background-image: url(green-porsche.jpeg);
+  background-color: #45a049;
+  background-size: cover;
+  background-position: center;
+  font-family: Arial, sans-serif;
+}
+.container {
+  width: 300px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+  text-align: center;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.logo {
+  display: block;
+  margin: 20px auto;
+}

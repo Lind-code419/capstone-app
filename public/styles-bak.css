@@ -12,34 +12,17 @@
 .screenHeader1 {
     background-image: linear-gradient(#9CDA86, #85EB9B61);
     width: 100%;
-  
-    color: #fff;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 10px;
 }
-.logo {
-    width: 100px;
-    height: 80px;
-  }
-  
+
 .screenHeader2 {
-    
-        background-image: linear-gradient(#9CDA86, #85EB9B61);
-        width: 100%;
-      
-        color: #fff;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px;
-    }
-    .logo {
-        width: 100px;
-        height: 80px;
-      }
-      
+    background-image: linear-gradient(#9CDA86, #85EB9B61);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
 
 .table {
     color: bisque;
@@ -143,7 +126,7 @@
     /* text-align: center; */
 }
 
-/newer file/
+/*newer file*/
 /*
 .loginbody {
     background-image: url(background.jpg);

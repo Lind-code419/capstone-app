@@ -50,6 +50,7 @@ def settings():
 
 
 @app.route('/predict', methods=['POST'])
+@cross_origin(origins="https://car-dhu4.onrender.com")
 def predict():
     # Get the input values from the form
     int_features = [float(x) for x in request.form.values()]

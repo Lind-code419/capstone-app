@@ -224,6 +224,7 @@ document.addEventListener("alpine:init", () => {
 
                     //var marker = L.marker([this.currentCoordinates]).addTo(map)
                     const locationMarker = L.marker(e.latlng).addTo(map)
+                        console.log('location: ' + e.latlng) //this works
                         .bindPopup(`Starting Point`).openPopup();
 
                     //const locationCircle = L.circle(e.latlng, radius).addTo(map);
@@ -344,6 +345,7 @@ document.addEventListener("alpine:init", () => {
                     },
                 });
                 console.log(response);
+                this.predictedEmissions = response[0];
             },
 
             addNewVehicle() {

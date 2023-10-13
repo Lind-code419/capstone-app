@@ -50,7 +50,7 @@ def settings():
 
 
 @app.route('/predict', methods=['POST'])
-@cross_origin(allow_headers=["Content-Type"])
+@cross_origin()
 def predict():
     # Get the input values from the form
     int_features = [float(x) for x in request.form.values()]

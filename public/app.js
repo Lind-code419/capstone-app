@@ -345,7 +345,8 @@ document.addEventListener("alpine:init", () => {
                     },
                 });
                 console.log(response);
-                this.predictedEmissions = response[0];
+                console.log('prediction answer: ' + response.data.prediction);
+                this.predictedEmissions = response.data.prediction[0];
             },
 
             addNewVehicle() {

@@ -112,7 +112,7 @@
                             </template>
                         </select>
 
-                        <p x-text="'Predicted Emissions: ' + predictedEmissions + 'g/Km'"></p>
+                        <p x-text="'Predicted Emissions: ' + predictedEmissions.toFixed(2) + ' g/Km'"></p>
                         <span><button class="btn3" @click="predictVehicleEmissions(fuelType, engineSize, combinedFuelConsumption)">Predict emissions</button>
 
 
@@ -152,8 +152,7 @@
 
 
             <button class="btn1"
-                @click="showSection3=!showSection3;showSection1=false;showSection2=false;showSection4=false;showSection5=false;showSection6=false;let myVehicles =viewMyVehicles();">View
-                My Vehicles</button>
+                @click="showSection3=!showSection3;showSection1=false;showSection2=false;showSection4=false;showSection5=false;showSection6=false;let myVehicles =viewMyVehicles();">            My Vehicles</button>
 
             <div x-show.transition="showSection3" class="inputblock">
 

@@ -49,6 +49,7 @@ document.addEventListener("alpine:init", () => {
             currentCoordinates:[],
             registrationNumber:'',
             currentDatePick:'',
+            dateInput:'',
             flatpickrInstance: null,
             fuelType:'',
             vehicleSelectionTax:'',
@@ -59,6 +60,7 @@ document.addEventListener("alpine:init", () => {
             modelAlpine:'',
             selectedVehicleTax:'',
             predictedEmissions:'',
+            currentVehicleEmissions: '',
 
 
 
@@ -300,10 +302,11 @@ document.addEventListener("alpine:init", () => {
 
             },
 
-            calculateTax(distanceEntered, selectedVehicleTax) { //this section works 
-                this.taxResult = this.distanceEntered * 0.2;
+            calculateTax(distanceEntered, currentVehicleEmissions) { //this section works 
+                this.taxResult = this.distanceEntered * currentVehicleEmissions *  0.0002;
+                return this.taxResult;
 
-                return axios
+               /* return axios
                     .post('/api/all_vehicles/get_car_emissions', {
                         "selectedVehicleTax": `${selectedVehicleTax}`
 
@@ -312,7 +315,7 @@ document.addEventListener("alpine:init", () => {
                         this.vehicleEmission = result.data.emission;//same as primary key?
                         console.log(result.data.emission);
                     })
-                    
+                 */   
                 },
 
 

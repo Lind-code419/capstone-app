@@ -105,14 +105,18 @@
             flatpickrInstance = flatpickr($refs.dateInput, {
               altInput: true,
               altFormat: 'F j, Y',
-              dateFormat: 'Y-m-d',
+              dateFormat: 'dmY',
               onChange: (selectedDates, dateStr, _) => {
                 currentDate = dateStr;
+                console.log('picked date: ' + currentDate)
               }
             })
           ">
 
                 <input x-ref="dateInput" type="text" placeholder="YYYY-MM-DD" class="w-full" />
+                <button @click="console.log(dateInput); ">
+                    Select this date
+                </button>
 
                 <button @click="currentDate = ''; flatpickrInstance.clear()">
                     Clear

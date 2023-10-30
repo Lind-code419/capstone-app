@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CO2 prediction Calculator</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.0/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="app.js"></script>
+
+
+</head>
+
+<body x-data="appData" class="pages">
+    <div class="screenHeader2"><button class="navbtn1" onclick="window.location.href='home.html';"><img
+                src="Arrow 1.svg"></button>
+    </div>
+    <h1>CO2 prediction Calculator</h1>
+
+
+    <div>
+
+
+
+
+
+
+        <p>Type in Make:</p>
+        <p x-text="makeAlpine"></p>
+        <input type="text" x-model="makeAlpine">
+
+        <p>Type in Model:</p>
+        <p x-text="modelAlpine"></p>
+        <input type="text" x-model="modelAlpine">
+
+        <p>Type in Combined (City and Highway combined) Fuel consumption in L/100Km:</p>
+        <p x-text="combinedFuelConsumption"></p>
+        <input type="text" x-model="combinedFuelConsumption">
+
+
+        <p>Type in Engine Size in L:</p>
+        <p x-text="engineSize"></p>
+        <input type="text" x-model="engineSize">
+
+        <p>Select Fuel Type: </p>
+        <select x-model="fuelType" class="selectionBox">
+
+            <option value="3">Fuel Type</option>
+            <option value="3">Regular 91/93</option>
+            <option value="4">15 % Ethanol</option>
+            <option value="1">Premium 95+</option>
+            <option value="2">Diesel</option>
+
+            </template>
+        </select>
+
+        <p x-text="'Predicted Emissions: ' + predictedEmissions.toFixed(2) + ' g/Km'"></p>
+        <span><button class="btn3"
+                @click="predictVehicleEmissions(fuelType, engineSize, combinedFuelConsumption)">Predict
+                emissions</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+    </div>
+
+
+    
+
+
+   
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
